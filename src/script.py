@@ -215,9 +215,16 @@ def _finalise_description(raw: str, *, tags: list[str], idea: TopicIdea) -> str:
         description = _clean_text(
             f"{idea.why_it_matters} A practical, no-hype tip for students in under a minute."
         )
-    if not _HASHTAG.search(description):
-        hashtags = " ".join(f"#{tag.replace(' ', '')}" for tag in tags[:3])
-        description = f"{description}\n\n{hashtags}".strip()
+    existing = {match.lower() for match in _HASHTAG.findall(description)}
+    required = ["#Shorts", "#AITips", "#StudyTips"]
+    hashtags = [tag for tag in required if tag.lower() not in existing]
+    hashtags.extend(
+        f"#{tag.replace(' ', '')}"
+        for tag in tags[:3]
+        if f"#{tag.replace(' ', '')}".lower() not in existing
+    )
+    if hashtags:
+        description = f"{description}\n\n{' '.join(hashtags[:5])}".strip()
     return description[:4900]
 
 

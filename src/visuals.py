@@ -266,7 +266,9 @@ def _usable_videos(
     return usable
 
 
-def _synthetic_clips(config: AppConfig, work_dir: Path, count: int = 3) -> list[Clip]:
+def _synthetic_clips(
+    config: AppConfig, work_dir: Path, count: int = 3, *, variant: str = ""
+) -> list[Clip]:
     logger.warning("Falling back to synthesised background clips")
     duration = max(config.video.clip_max_seconds, 4.0)
     clips: list[Clip] = []
@@ -277,6 +279,7 @@ def _synthetic_clips(config: AppConfig, work_dir: Path, count: int = 3) -> list[
             duration=duration,
             width=config.video.width,
             height=config.video.height,
+            variant=f"{variant}-{index}",
         )
         clips.append(
             Clip(
@@ -304,6 +307,8 @@ def fetch_clips(
     total_duration: float,
     work_dir: Path,
     api_key: str,
+    excluded_source_ids: set[str] | None = None,
+    variant: str = "",
 ) -> list[Clip]:
     """Download a set of clips that covers *total_duration*."""
 
@@ -319,6 +324,7 @@ def fetch_clips(
 
     clips: list[Clip] = []
     used_ids: set[str] = set()
+    excluded_ids = excluded_source_ids or set()
 
     if api_key.strip():
         client = PexelsClient(api_key, config)
@@ -336,7 +342,9 @@ def fetch_clips(
                         logger.warning("Search for %r (%s) failed: %s", search_term, orientation, exc)
                         continue
 
-                    for video in _usable_videos(videos, used_ids=used_ids, config=config):
+                    for video in _usable_videos(
+                        videos, used_ids=used_ids | excluded_ids, config=config
+                    ):
                         file_info = _pick_file(
                             video,
                             orientation=orientation,
@@ -390,7 +398,7 @@ def fetch_clips(
                     continue
                 for video in videos:
                     video_id = str(video["id"])
-                    if video_id in used_ids:
+                    if video_id in used_ids or video_id in excluded_ids:
                         continue
                     destination = work_dir / f"commons-{video_id}.video"
                     try:
@@ -421,7 +429,7 @@ def fetch_clips(
             client.close()
 
     if not clips:
-        clips = _synthetic_clips(config, work_dir)
+        clips = _synthetic_clips(config, work_dir, target, variant=variant)
 
     if len(clips) < target:
         logger.info("Only %d clip(s) available; the render will reuse them", len(clips))

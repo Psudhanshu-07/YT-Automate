@@ -112,6 +112,7 @@ def _empty_history(niche: str) -> dict[str, Any]:
         "updated_at": None,
         "topics": [],
         "scripts": [],
+        "visuals": [],
     }
 
 
@@ -227,6 +228,31 @@ def record_script(history: dict[str, Any], *, niche: str, topic: str, text: str,
     limit = max(5, keep)
     if len(scripts) > limit:
         del scripts[: len(scripts) - limit]
+
+
+def visual_source_ids(history: Mapping[str, Any], *, niche: str) -> set[str]:
+    """Return footage IDs already used for this niche."""
+
+    wanted = niche.strip().lower()
+    return {
+        str(entry["source_id"])
+        for entry in history.get("visuals", [])
+        if isinstance(entry, Mapping)
+        and str(entry.get("niche", wanted)).strip().lower() == wanted
+        and entry.get("source_id")
+    }
+
+
+def record_visuals(
+    history: dict[str, Any], *, niche: str, source_ids: Iterable[str], keep: int = 300
+) -> None:
+    """Remember footage IDs so future runs choose different clips."""
+
+    visuals = history.setdefault("visuals", [])
+    for source_id in source_ids:
+        visuals.append({"niche": niche, "source_id": source_id})
+    if len(visuals) > keep:
+        del visuals[: len(visuals) - keep]
 
 
 # ---------------------------------------------------------------------------

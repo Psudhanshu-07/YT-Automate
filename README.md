@@ -194,7 +194,9 @@ Pexels is optional. If `PEXELS_API_KEY` is missing, the pipeline automatically
 uses video files from [Wikimedia Commons](https://commons.wikimedia.org/)
 through its public API; no key or account is required. Commons results are
 less predictable than Pexels, so the pipeline may use its generated gradient
-fallback when no suitable video is available.
+fallback when no suitable video is available. Source IDs are recorded in
+`history.json`, so future runs avoid reusing footage already used by this
+channel; fallback gradients are varied per run.
 
 ### 4. Create a Google Cloud project and enable the YouTube Data API v3
 

@@ -8,6 +8,7 @@ can synthesise a gradient clip as a last-resort visual.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import re
@@ -268,7 +269,9 @@ def extract_frame(video: Path, output: Path, *, at_seconds: float) -> Path:
     return output
 
 
-def synthesise_gradient_clip(output: Path, *, duration: float, width: int, height: int) -> Path:
+def synthesise_gradient_clip(
+    output: Path, *, duration: float, width: int, height: int, variant: str = ""
+) -> Path:
     """Create a calm gradient clip when no stock footage is available."""
 
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -296,8 +299,13 @@ def synthesise_gradient_clip(output: Path, *, duration: float, width: int, heigh
         str(output),
     ]
 
+    digest = hashlib.sha256(variant.encode("utf-8")).digest()
+    colors = tuple(
+        f"0x{digest[index]:02X}{digest[index + 1]:02X}{digest[index + 2]:02X}"
+        for index in (0, 3, 6)
+    )
     gradient_source = (
-        f"gradients=s={width}x{height}:r=30:c0=0x0B1020:c1=0x1B4B6B:c2=0x0F766E:n=2:"
+        f"gradients=s={width}x{height}:r=30:c0={colors[0]}:c1={colors[1]}:c2={colors[2]}:n=2:"
         f"speed=0.06:d={max(1.0, duration):.2f}"
     )
     try:

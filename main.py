@@ -39,7 +39,9 @@ from src.ideas import (
     load_history,
     record_script,
     record_topic,
+    record_visuals,
     save_history,
+    visual_source_ids,
 )
 from src.llm import GeminiClient
 from src.logging_utils import get_logger, log_stage, setup_logging
@@ -293,6 +295,8 @@ def _run(args: argparse.Namespace, config: AppConfig) -> int:
             total_duration=voice.duration,
             work_dir=build_dir,
             api_key=pexels_key,
+            excluded_source_ids=visual_source_ids(history, niche=config.niche),
+            variant=run_id,
         )
 
     with log_stage(logger, "6/8 Select background music"):
@@ -370,6 +374,11 @@ def _run(args: argparse.Namespace, config: AppConfig) -> int:
             topic=idea.topic,
             text=script.voiceover_text,
             keep=config.quality_guard.recent_scripts_window * 2,
+        )
+        record_visuals(
+            history,
+            niche=config.niche,
+            source_ids=(clip.source_id for clip in clips if clip.source != "synthetic"),
         )
         save_history(config.history_path, history)
 
