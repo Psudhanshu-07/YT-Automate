@@ -19,10 +19,10 @@ channel:
 llm:
   # Primary model. Any current free-tier Gemini Flash model works, e.g.
   # gemini-2.5-flash, gemini-2.0-flash, gemini-flash-latest.
-  model: "gemini-2.5-flash"
+  model: "gemini-3.8-flash"
   # Tried in order when the primary is rate-limited, retired, or unavailable.
   fallback_models:
-    - "gemini-2.0-flash"
+    - "gemini-3.8-flash"
     - "gemini-flash-latest"
   temperature: 0.95
   max_output_tokens: 2048
@@ -157,7 +157,7 @@ video:
 # -----------------------------------------------------------------------------
 upload:
   # "private" = review mode (recommended first), "unlisted", or "public".
-  privacy_status: "private"
+  privacy_status: "public"
   category_id: "28"            # 28 = Science & Technology
   default_language: "en"
   made_for_kids: false

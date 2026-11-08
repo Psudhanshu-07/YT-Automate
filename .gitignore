@@ -23,6 +23,8 @@ output/
 build/
 .cache/
 *.log
+tools/
+ffmpeg-path.txt
 
 # ---- OS / editors ----
 .DS_Store

@@ -29,6 +29,7 @@ from .logging_utils import get_logger
 logger = get_logger("visuals")
 
 PEXELS_SEARCH_URL = "https://api.pexels.com/videos/search"
+COMMONS_API_URL = "https://commons.wikimedia.org/w/api.php"
 _RETRIABLE_STATUS = {408, 425, 429, 500, 502, 503, 504}
 _MAX_PAGES = 2
 
@@ -127,6 +128,58 @@ class PexelsClient:
             if len(results) >= self._config.visuals.per_keyword_results:
                 break
         return results
+
+
+class WikimediaClient:
+    """Fetch freely licensed video files from Wikimedia Commons without a key."""
+
+    def __init__(self, config: AppConfig) -> None:
+        self._config = config
+        self._session = requests.Session()
+        self._session.headers.update(
+            {
+                "User-Agent": "shorts-agent/1.0 (Wikimedia Commons API client)",
+                "Accept": "application/json",
+            }
+        )
+
+    def close(self) -> None:
+        self._session.close()
+
+    def search(self, query: str) -> list[dict[str, Any]]:
+        response = self._session.get(
+            COMMONS_API_URL,
+            params={
+                "action": "query",
+                "format": "json",
+                "generator": "search",
+                "gsrsearch": f"{query} filetype:video",
+                "gsrnamespace": 6,
+                "gsrlimit": min(20, self._config.visuals.per_keyword_results),
+                "prop": "imageinfo",
+                "iiprop": "url|size|mime",
+            },
+            timeout=self._config.visuals.request_timeout_seconds,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        pages = payload.get("query", {}).get("pages", {})
+        candidates: list[dict[str, Any]] = []
+        for page in pages.values() if isinstance(pages, dict) else []:
+            info = (page.get("imageinfo") or [{}])[0]
+            mime = str(info.get("mime") or "")
+            url = info.get("url")
+            if mime.startswith("video/") and isinstance(url, str) and url.startswith("https://"):
+                candidates.append(
+                    {
+                        "id": str(page.get("pageid") or page.get("title") or ""),
+                        "url": url,
+                        "width": int(info.get("width") or 0),
+                        "height": int(info.get("height") or 0),
+                    }
+                )
+        random.shuffle(candidates)
+        return candidates
 
 
 def _pick_file(video: dict[str, Any], *, orientation: str, min_width: int) -> dict[str, Any] | None:
@@ -264,73 +317,108 @@ def fetch_clips(
         total_duration,
     )
 
-    client = PexelsClient(api_key, config)
     clips: list[Clip] = []
     used_ids: set[str] = set()
 
-    try:
-        for keyword in keywords:
-            if len(clips) >= target:
-                break
-            search_term = _sanitise_keyword(keyword)
-            for orientation in ("portrait", "landscape"):
+    if api_key.strip():
+        client = PexelsClient(api_key, config)
+        try:
+            for keyword in keywords:
                 if len(clips) >= target:
                     break
-                try:
-                    videos = client.search(search_term, orientation=orientation)
-                except VisualsError as exc:
-                    logger.warning("Search for %r (%s) failed: %s", search_term, orientation, exc)
-                    continue
-
-                for video in _usable_videos(videos, used_ids=used_ids, config=config):
-                    file_info = _pick_file(
-                        video,
-                        orientation=orientation,
-                        min_width=config.visuals.min_clip_width,
-                    )
-                    if not file_info:
+                search_term = _sanitise_keyword(keyword)
+                for orientation in ("portrait", "landscape"):
+                    if len(clips) >= target:
+                        break
+                    try:
+                        videos = client.search(search_term, orientation=orientation)
+                    except VisualsError as exc:
+                        logger.warning("Search for %r (%s) failed: %s", search_term, orientation, exc)
                         continue
 
-                    video_id = str(video.get("id"))
-                    destination = work_dir / f"pexels-{video_id}-{orientation}.mp4"
+                    for video in _usable_videos(videos, used_ids=used_ids, config=config):
+                        file_info = _pick_file(
+                            video,
+                            orientation=orientation,
+                            min_width=config.visuals.min_clip_width,
+                        )
+                        if not file_info:
+                            continue
+
+                        video_id = str(video.get("id"))
+                        destination = work_dir / f"pexels-{video_id}-{orientation}.mp4"
+                        try:
+                            size = _download(client, str(file_info["link"]), destination, config)
+                            duration = probe_duration(destination)
+                        except Exception as exc:  # noqa: BLE001 - try the next candidate
+                            logger.warning("Skipping Pexels clip %s: %s", video_id, exc)
+                            continue
+
+                        if duration < 1.0:
+                            logger.warning("Skipping Pexels clip %s: only %.2fs long", video_id, duration)
+                            destination.unlink(missing_ok=True)
+                            continue
+
+                        used_ids.add(video_id)
+                        clips.append(
+                            Clip(
+                                path=destination,
+                                keyword=search_term,
+                                source=f"pexels-{orientation}",
+                                source_id=video_id,
+                                width=int(file_info.get("width") or 0),
+                                height=int(file_info.get("height") or 0),
+                                duration=duration,
+                            )
+                        )
+                        logger.info("Clip %d/%d: %r %s %.1fs (%.1f MB)", len(clips), target, search_term, orientation, duration, size / (1024 * 1024))
+                        break
+        finally:
+            client.close()
+    else:
+        logger.info("PEXELS_API_KEY is not set; using Wikimedia Commons (no API key required)")
+        client = WikimediaClient(config)
+        try:
+            for keyword in keywords:
+                if len(clips) >= target:
+                    break
+                search_term = _sanitise_keyword(keyword)
+                try:
+                    videos = client.search(search_term)
+                except (requests.RequestException, ValueError) as exc:
+                    logger.warning("Wikimedia search for %r failed: %s", search_term, exc)
+                    continue
+                for video in videos:
+                    video_id = str(video["id"])
+                    if video_id in used_ids:
+                        continue
+                    destination = work_dir / f"commons-{video_id}.video"
                     try:
-                        size = _download(client, str(file_info["link"]), destination, config)
+                        size = _download(client, video["url"], destination, config)  # type: ignore[arg-type]
                         duration = probe_duration(destination)
                     except Exception as exc:  # noqa: BLE001 - try the next candidate
-                        logger.warning("Skipping Pexels clip %s: %s", video_id, exc)
+                        logger.warning("Skipping Wikimedia clip %s: %s", video_id, exc)
                         continue
-
-                    if duration < 1.0:
-                        logger.warning("Skipping Pexels clip %s: only %.2fs long", video_id, duration)
+                    if duration < config.visuals.min_clip_seconds:
                         destination.unlink(missing_ok=True)
                         continue
-
                     used_ids.add(video_id)
                     clips.append(
                         Clip(
                             path=destination,
                             keyword=search_term,
-                            source=f"pexels-{orientation}",
+                            source="wikimedia-commons",
                             source_id=video_id,
-                            width=int(file_info.get("width") or 0),
-                            height=int(file_info.get("height") or 0),
+                            width=video["width"],
+                            height=video["height"],
                             duration=duration,
                         )
                     )
-                    logger.info(
-                        "Clip %d/%d: %r %s %dx%d %.1fs (%.1f MB)",
-                        len(clips),
-                        target,
-                        search_term,
-                        orientation,
-                        int(file_info.get("width") or 0),
-                        int(file_info.get("height") or 0),
-                        duration,
-                        size / (1024 * 1024),
-                    )
-                    break
-    finally:
-        client.close()
+                    logger.info("Clip %d/%d: %r Wikimedia %.1fs (%.1f MB)", len(clips), target, search_term, duration, size / (1024 * 1024))
+                    if len(clips) >= target:
+                        break
+        finally:
+            client.close()
 
     if not clips:
         clips = _synthetic_clips(config, work_dir)

@@ -30,7 +30,7 @@ from typing import Any, Sequence
 
 from src.captions import generate_captions
 from src.config import AppConfig, load_config
-from src.env import load_dotenv, require_env
+from src.env import load_dotenv, optional_env, require_env
 from src.errors import EnvironmentError_, ShortsAgentError, UploadError
 from src.ffmpeg_tools import ffmpeg_available
 from src.ideas import (
@@ -238,7 +238,7 @@ def _validate_environment(config: AppConfig, *, dry_run: bool) -> tuple[str, str
         )
 
     gemini_key = require_env("GEMINI_API_KEY", purpose="Gemini topic and script generation")
-    pexels_key = require_env("PEXELS_API_KEY", purpose="Pexels stock footage")
+    pexels_key = optional_env("PEXELS_API_KEY")
 
     if not dry_run:
         require_env("YT_CLIENT_ID", purpose="YouTube OAuth client ID")

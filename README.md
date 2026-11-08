@@ -180,16 +180,21 @@ workflow, which is sufficient on its own).
 3. **Create API key** -> choose/create a Google Cloud project -> copy the key.
 4. Keep it private; you will paste it into GitHub Secrets in step 8.
 
-The default model is `gemini-2.5-flash`. Free-tier quotas change over time; if
-your account does not have a model, change `llm.model` in `config.yaml`
-(`gemini-2.0-flash` and `gemini-flash-latest` are already configured as
-fallbacks).
+The default model is `gemini-3.8-flash`. Free-tier quotas and model names
+change over time; if your account does not have this model, change `llm.model`
+in `config.yaml` and update its fallback list.
 
-### 3. Get a Pexels API key (free)
+### 3. Get stock footage (Pexels optional)
 
 1. Create an account at <https://www.pexels.com/>.
 2. Open <https://www.pexels.com/api/> and request a key (instant, no card).
 3. Copy the key. Respect the Pexels licence: do not resell the footage itself.
+
+Pexels is optional. If `PEXELS_API_KEY` is missing, the pipeline automatically
+uses video files from [Wikimedia Commons](https://commons.wikimedia.org/)
+through its public API; no key or account is required. Commons results are
+less predictable than Pexels, so the pipeline may use its generated gradient
+fallback when no suitable video is available.
 
 ### 4. Create a Google Cloud project and enable the YouTube Data API v3
 
@@ -252,7 +257,7 @@ python get_refresh_token.py --client-secrets client_secret.json --write-env
 Delete `client_secret.json` afterwards if you like; only the refresh token is
 needed by CI.
 
-### 8. Add the five GitHub secrets
+### 8. Add the required GitHub secrets
 
 **Repository -> Settings -> Secrets and variables -> Actions -> New repository
 secret**. Add exactly these names:
@@ -260,12 +265,12 @@ secret**. Add exactly these names:
 | Secret | Value |
 | --- | --- |
 | `GEMINI_API_KEY` | From step 2 |
-| `PEXELS_API_KEY` | From step 3 |
 | `YT_CLIENT_ID` | From the downloaded client JSON (`installed.client_id`) |
 | `YT_CLIENT_SECRET` | From the client JSON (`installed.client_secret`) |
 | `YT_REFRESH_TOKEN` | From step 7 |
 
-Nothing else is required. `GITHUB_TOKEN` is provided automatically.
+`PEXELS_API_KEY` is optional. If omitted, Wikimedia Commons is used for
+footage. Nothing else is required; `GITHUB_TOKEN` is provided automatically.
 
 ### 9. Run the workflow manually
 
@@ -279,14 +284,13 @@ Nothing else is required. `GITHUB_TOKEN` is provided automatically.
 > A failed run still uploads the produced video as an artifact
 > (`Actions -> the run -> Artifacts -> short-<run id>`), retained for 7 days.
 
-### 10. Switch from private to public
+### 10. Public automation
 
-When you are happy with the output, enable full auto in one of two ways:
-
-* **Permanent:** set `upload.privacy_status: "public"` in `config.yaml`, commit.
-* **One-off:** run the workflow with **privacy** = `public`.
-
-From then on the daily cron publishes automatically with no human in the loop.
+The workflow is configured for three public Shorts per day at 07:00, 13:00,
+and 19:00 UTC. `config.yaml` also uses `upload.privacy_status: "public"` for
+local runs. Change the cron expressions in
+[`.github/workflows/shorts.yml`](./.github/workflows/shorts.yml) if you need
+different times.
 
 > Uploads from unverified API projects are **no longer locked to private** as of
 > the July 2026 policy change; `privacyStatus` is honoured. If a video still
@@ -299,14 +303,14 @@ From then on the daily cron publishes automatically with no human in the loop.
 
 `config.yaml -> upload.privacy_status` accepts:
 
-* `private` (default): every video lands in YouTube Studio for review. Nothing is
-  public until you flip it. This is the safe first week.
+* `private`: every video lands in YouTube Studio for review.
 * `unlisted`: publishable by link only, useful for sharing drafts.
-* `public`: fully automatic publishing.
+* `public` (current setting): fully automatic publishing.
 
-Start private, review a handful, then switch. Also watch the channel's daily
-upload limits: new/unverified channels are capped by YouTube, and the API quota
-allows about 100 uploads per day.
+The generated metadata includes a search-friendly title, description, hashtags,
+tags, Science & Technology category, English language metadata, and Shorts
+portrait dimensions. These improve discoverability but cannot guarantee
+views. Monitor YouTube Studio and the channel's daily upload limits.
 
 ---
 
@@ -408,7 +412,7 @@ video:
 
 ```yaml
 upload:
-  privacy_status: "private"
+  privacy_status: "public"
   category_id: "28"            # 28 = Science & Technology
   made_for_kids: false
   embeddable: true
@@ -434,7 +438,9 @@ Edit the cron line in `.github/workflows/shorts.yml`:
 ```yaml
 on:
   schedule:
+    - cron: "0 7 * * *"    # 07:00 UTC = 12:30 IST
     - cron: "0 13 * * *"   # 13:00 UTC = 18:30 IST
+    - cron: "0 19 * * *"   # 19:00 UTC = 00:30 IST
 ```
 
 ---
@@ -472,8 +478,10 @@ from the narration text so captions still appear.
 **Footage** (`src/visuals.py`)
 Portrait search first, landscape second; the best efficient MP4 rendition is
 chosen (favour ~1080p, avoid huge 4K downloads), streamed to disk with a size
-cap, duration-checked with ffprobe, and shuffled so runs differ. Nothing is
-cached between runs. If Pexels yields nothing, a gradient clip is synthesised.
+cap, duration-checked with ffprobe, and shuffled so runs differ. Pexels is used
+when `PEXELS_API_KEY` is set; otherwise Wikimedia Commons is queried without a
+key. Nothing is cached between runs. If no source yields a usable clip, a
+gradient clip is synthesised.
 
 **Render** (`src/video.py`)
 A single FFmpeg invocation with a filter-graph script file:
@@ -524,7 +532,7 @@ keep the niche focused, and do not publish content you would not defend.
 
 ## Scheduling
 
-* `.github/workflows/shorts.yml` runs daily at 13:00 UTC and can be started
+* `.github/workflows/shorts.yml` runs three times daily and can be started
   manually (`workflow_dispatch`) with the `dry_run` and `privacy` inputs.
 * `concurrency` prevents two runs from writing `history.json` at once.
 * Cron is UTC and GitHub may delay scheduled jobs by several minutes under load.
@@ -571,11 +579,11 @@ Common tweaks while iterating:
 
 ### "Missing required environment variable ..." (exit code 3)
 
-Locally: export the five variables or copy `.env.example` to `.env`.
+Locally: export the required variables or copy `.env.example` to `.env`.
 In CI: check **Settings -> Secrets and variables -> Actions** for the exact names
-`GEMINI_API_KEY`, `PEXELS_API_KEY`, `YT_CLIENT_ID`, `YT_CLIENT_SECRET`,
-`YT_REFRESH_TOKEN`. Secret names are case-sensitive; values are never printed in
-logs.
+`GEMINI_API_KEY`, `YT_CLIENT_ID`, `YT_CLIENT_SECRET`, and `YT_REFRESH_TOKEN`.
+`PEXELS_API_KEY` is optional; without it, Wikimedia Commons is used. Secret
+names are case-sensitive; values are never printed in logs.
 
 ### "FFmpeg was not found on PATH"
 
@@ -705,11 +713,11 @@ Things that cannot be automated away (all one-time):
       **test user**, add the `youtube.upload` scope.
 - [ ] Create **Desktop app** OAuth credentials and download the JSON.
 - [ ] Run `python get_refresh_token.py --client-secrets client_secret.json`.
-- [ ] Add the 5 repository secrets.
-- [ ] Run the workflow manually with `dry_run=true`, then once with
-      `privacy=private`, and review the video in YouTube Studio.
+- [ ] Add the required repository secrets (`PEXELS_API_KEY` is optional).
+- [ ] Run the workflow manually with `dry_run=true`, then use
+      `privacy=public` after reviewing the generated video.
 - [ ] Decide whether to publish the OAuth app (to stop 7-day token expiry).
-- [ ] When satisfied, set `upload.privacy_status: "public"` and let the cron run.
+- [ ] Confirm the three daily public cron runs are enabled.
 - [ ] Optional: drop a royalty-free track into `assets/music/`.
 - [ ] Optional: tune `config.yaml` (niche, voice, caption style, schedule).
 
@@ -717,8 +725,10 @@ Things that cannot be automated away (all one-time):
 
 ## Policies, licences, credits
 
-* **Footage:** Pexels only (free licence, no attribution required; do not resell
-  the footage itself or imply endorsement). Landscape clips are centre-cropped.
+* **Footage:** Pexels when configured, otherwise Wikimedia Commons. Check the
+  individual Commons file licence before publishing and provide attribution
+  when that licence requires it. Do not resell the footage itself or imply
+  endorsement. Landscape clips are centre-cropped.
 * **Music:** you must supply a track you are licensed to publish. See
   `assets/music/README.md`.
 * **Voice:** edge-tts uses Microsoft's read-aloud service. Free for personal use;

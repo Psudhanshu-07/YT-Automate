@@ -179,7 +179,7 @@ def upload_video(
         privacy,
     )
 
-    request = youtube.videos.insert(
+    request = youtube.videos().insert(
         part="snippet,status",
         body=body,
         media_body=media,
