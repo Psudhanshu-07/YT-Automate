@@ -1,0 +1,26 @@
+# Runtime dependencies for shorts-agent.
+# All of these are free/open-source and every API used by the pipeline has a
+# free tier. Versions are pinned so CI runs are reproducible.
+#
+# Install: pip install -r requirements.txt
+# System dependency (not installed by pip): FFmpeg 6+ with libx264, libass, aac.
+#            Ubuntu/Debian: sudo apt-get install -y ffmpeg fonts-dejavu-core
+
+# Google Gemini (topic + script generation)
+google-genai==2.33.0
+
+# Free Microsoft Edge neural text-to-speech (no API key required)
+edge-tts==7.3.1
+
+# Word-level timestamps on CPU, int8 quantised
+faster-whisper==1.2.1
+
+# YouTube Data API v3 upload (resumable)
+google-api-python-client==2.201.0
+google-auth-oauthlib==1.5.0
+
+# HTTP client used for the Pexels API
+requests==2.34.2
+
+# config.yaml parsing
+PyYAML==6.0.3

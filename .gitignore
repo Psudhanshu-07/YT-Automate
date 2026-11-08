@@ -1,0 +1,32 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.venv-*/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---- Local secrets (never commit) ----
+.env
+.env.*
+!.env.example
+client_secret*.json
+credentials.json
+token.json
+*.pem
+
+# ---- Generated media / scratch space ----
+output/
+build/
+.cache/
+*.log
+
+# ---- OS / editors ----
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/

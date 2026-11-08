@@ -1,0 +1,179 @@
+# =============================================================================
+# shorts-agent configuration
+# -----------------------------------------------------------------------------
+# Change `niche` to re-target the agent. Everything else has a sane default.
+# Secrets are NEVER stored here - they come from environment variables
+# (GitHub Secrets in CI, your shell locally).
+# Relative paths are resolved against the repository root.
+# =============================================================================
+
+niche: "tech and AI tips for students"
+
+channel:
+  name: "Shorts Agent"
+  language: "en"
+
+# -----------------------------------------------------------------------------
+# Gemini (topic ideas + script writing)
+# -----------------------------------------------------------------------------
+llm:
+  # Primary model. Any current free-tier Gemini Flash model works, e.g.
+  # gemini-2.5-flash, gemini-2.0-flash, gemini-flash-latest.
+  model: "gemini-2.5-flash"
+  # Tried in order when the primary is rate-limited, retired, or unavailable.
+  fallback_models:
+    - "gemini-2.0-flash"
+    - "gemini-flash-latest"
+  temperature: 0.95
+  max_output_tokens: 2048
+  max_retries: 3
+  retry_base_seconds: 4.0
+
+# -----------------------------------------------------------------------------
+# Topic selection / de-duplication
+# -----------------------------------------------------------------------------
+ideas:
+  history_file: "history.json"
+  max_attempts: 4
+  # 0.0-1.0. Topics scoring above this against any past topic are rejected.
+  max_topic_similarity: 0.75
+  # How many recent topics are pasted into the prompt as "do not repeat".
+  history_prompt_limit: 60
+
+# -----------------------------------------------------------------------------
+# Script shape (30-45s of narration)
+# -----------------------------------------------------------------------------
+script:
+  # ~150 words per minute -> 78-110 words is roughly 31-44 seconds.
+  min_words: 78
+  max_words: 110
+  min_keywords: 5
+  max_keywords: 8
+  title_max_chars: 70
+  tag_count: 8
+  max_attempts: 3
+
+# -----------------------------------------------------------------------------
+# Content-quality guard (anti "mass-produced content" heuristics)
+# -----------------------------------------------------------------------------
+quality_guard:
+  # Reject a script whose narration is too close to a recent one.
+  max_similarity_to_recent_scripts: 0.82
+  recent_scripts_window: 15
+  # Every script must contain a concrete number/tool name or a worked example.
+  require_number_or_tool: true
+  banned_phrases:
+    - "in today's fast-paced world"
+    - "in this video"
+    - "game-changer"
+    - "unlock the power"
+    - "dive into"
+    - "in conclusion"
+    - "let's explore"
+    - "revolutionize your"
+    - "as an ai"
+    - "without further ado"
+
+# -----------------------------------------------------------------------------
+# Voiceover (edge-tts, free, no key)
+# -----------------------------------------------------------------------------
+voice:
+  # Run `edge-tts --list-voices` for the full list.
+  voice: "en-US-AndrewNeural"
+  rate: "+6%"
+  pitch: "+0Hz"
+  volume: "+0%"
+  # Hard ceiling for the voice track; longer narration is time-compressed.
+  max_audio_seconds: 50
+  # Extra silence so the last caption is not clipped.
+  tail_padding_seconds: 0.45
+  loudness_target_lufs: -14.0
+  max_retries: 3
+
+# -----------------------------------------------------------------------------
+# Captions (faster-whisper + burned-in ASS subtitles)
+# -----------------------------------------------------------------------------
+captions:
+  whisper_model: "base"       # tiny | base | small | medium | large-v3
+  whisper_compute_type: "int8"
+  whisper_beam_size: 5
+  # "Montserrat" is installed by the workflow; libass falls back gracefully.
+  font: "Montserrat"
+  fonts_dir: ""               # optional absolute path containing .ttf files
+  font_size: 92
+  bold: true
+  primary_color: "&H00FFFFFF"   # ASS is &HAABBGGRR -> white
+  highlight_color: "&H0000E5FF" # amber, highlights the word being spoken
+  outline_color: "&H00000000"
+  outline: 5
+  shadow: 2
+  margin_v: 520
+  uppercase: true
+  max_chars_per_line: 20
+  max_lines: 2
+  max_chunk_seconds: 3.2
+  min_chunk_chars: 8
+
+# -----------------------------------------------------------------------------
+# Stock footage (Pexels free API)
+# -----------------------------------------------------------------------------
+visuals:
+  per_keyword_results: 15
+  max_download_mb: 40
+  min_clip_seconds: 3.0
+  min_clip_width: 720
+  request_timeout_seconds: 30
+  max_retries: 3
+
+# -----------------------------------------------------------------------------
+# Background music (royalty-free file you place in assets/music/)
+# -----------------------------------------------------------------------------
+music:
+  enabled: true
+  track: ""                    # e.g. "lofi-study.mp3"; empty = first audio file
+  volume: 0.07                 # applied before ducking
+  duck: true                   # sidechain-compress music under the voice
+  fade_in_seconds: 1.5
+  fade_out_seconds: 2.0
+
+# -----------------------------------------------------------------------------
+# Render settings (portrait Shorts)
+# -----------------------------------------------------------------------------
+video:
+  width: 1080
+  height: 1920
+  fps: 30
+  max_duration_seconds: 57     # Shorts must be < 60s; keep headroom
+  clip_max_seconds: 5.5        # how long one stock clip stays on screen
+  fade_seconds: 0.3
+  crf: 21
+  preset: "veryfast"
+  audio_bitrate: "192k"
+  preview_position: 0.35       # frame timestamp (fraction) for preview.jpg
+  encode_timeout_seconds: 1800
+
+# -----------------------------------------------------------------------------
+# YouTube upload
+# -----------------------------------------------------------------------------
+upload:
+  # "private" = review mode (recommended first), "unlisted", or "public".
+  privacy_status: "private"
+  category_id: "28"            # 28 = Science & Technology
+  default_language: "en"
+  made_for_kids: false
+  embeddable: true
+  license: "youtube"           # "youtube" or "creativeCommon"
+  max_retries: 6
+  retry_base_seconds: 5.0
+  chunk_size_mb: 8
+
+# -----------------------------------------------------------------------------
+# Filesystem
+# -----------------------------------------------------------------------------
+paths:
+  output_dir: "output"         # finished videos, previews, metadata
+  work_dir: "build"            # scratch space, deleted after each run
+  music_dir: "assets/music"
+
+logging:
+  level: "INFO"
