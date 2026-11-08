@@ -179,10 +179,12 @@ def progress_run(
     description: str,
     cwd: Path,
 ) -> None:
-    """Run an FFmpeg encode, logging progress pipes (out_time_ms).
+    """Run an FFmpeg encode, logging progress values after it exits.
 
     stderr goes to a file rather than a pipe: a long encode that emits warnings
     can otherwise fill the OS pipe buffer while we read stdout and deadlock.
+    ``communicate`` is used so the timeout also covers a process that stops
+    producing progress output.
     """
 
     logger.info("%s: starting", description)
@@ -199,8 +201,8 @@ def progress_run(
             errors="replace",
         )
         try:
-            assert process.stdout is not None
-            for line in process.stdout:
+            stdout, _ = process.communicate(timeout=timeout)
+            for line in stdout.splitlines():
                 line = line.strip()
                 if not line.startswith("out_time_ms="):
                     continue
@@ -212,16 +214,15 @@ def progress_run(
                 if bucket > last_logged:
                     last_logged = bucket
                     logger.info("%s: %ds encoded", description, int(seconds))
-            process.stdout.close()
-            return_code = process.wait(timeout=timeout)
+            return_code = process.returncode
         except subprocess.TimeoutExpired:
             process.kill()
-            process.wait(timeout=30)
+            process.communicate(timeout=30)
             raise FFmpegError(f"{description} timed out after {timeout:.0f}s")
         finally:
             if process.poll() is None:
                 process.kill()
-                process.wait(timeout=30)
+                process.communicate(timeout=30)
 
     if return_code != 0:
         try:

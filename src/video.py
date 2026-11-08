@@ -17,6 +17,7 @@ argument length limit.
 from __future__ import annotations
 
 import math
+import os
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Sequence
@@ -203,6 +204,15 @@ def _render(
         "-progress",
         "pipe:1",
         "-nostats",
+        # Keep the GitHub-hosted runner within its memory budget. The filter
+        # graph has several 1080x1920 inputs and unrestricted worker threads can
+        # be killed by the runner before FFmpeg writes the MP4 trailer.
+        "-threads",
+        "1",
+        "-filter_threads",
+        "1",
+        "-filter_complex_threads",
+        "1",
     ]
     for segment in segments:
         command.extend(
@@ -338,13 +348,17 @@ def build_video(
 
     output.parent.mkdir(parents=True, exist_ok=True)
 
+    # Keep the final media extension so FFmpeg can infer the MP4 muxer.
+    temporary_output = output.with_name(f".{output.stem}.part{output.suffix}")
+    temporary_output.unlink(missing_ok=True)
+
     try:
         _render(
             config=config,
             segments=segments,
             voice=voice,
             music_path=music_path,
-            output=output,
+            output=temporary_output,
             work_dir=work_dir,
             total_duration=total_duration,
             duck_music=bool(music_path) and config.music.duck,
@@ -362,14 +376,16 @@ def build_video(
             segments=segments,
             voice=voice,
             music_path=music_path,
-            output=output,
+            output=temporary_output,
             work_dir=work_dir,
             total_duration=total_duration,
             duck_music=False,
             music_volume=config.music.volume * 0.6,
         )
 
-    duration = _validate_output(output, config)
+    # Validate the completed file before exposing it under the final name.
+    duration = _validate_output(temporary_output, config)
+    os.replace(temporary_output, output)
 
     preview = output.parent / "preview.jpg"
     extract_frame(output, preview, at_seconds=duration * config.video.preview_position)
