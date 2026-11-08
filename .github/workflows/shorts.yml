@@ -91,6 +91,28 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
+      - name: Validate Actions secrets
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+        run: |
+          set -euo pipefail
+          missing=()
+          [ -n "${GEMINI_API_KEY}" ] || missing+=("GEMINI_API_KEY")
+          if [ "${DRY_RUN}" != "true" ]; then
+            [ -n "${YT_CLIENT_ID}" ] || missing+=("YT_CLIENT_ID")
+            [ -n "${YT_CLIENT_SECRET}" ] || missing+=("YT_CLIENT_SECRET")
+            [ -n "${YT_REFRESH_TOKEN}" ] || missing+=("YT_REFRESH_TOKEN")
+          fi
+          if [ "${#missing[@]}" -gt 0 ]; then
+            printf '::error title=Missing GitHub Actions secret::Add these repository secrets under Settings > Secrets and variables > Actions: %s\n' "${missing[*]}"
+            exit 1
+          fi
+          echo "Required secrets are configured for this run."
+
       - name: Generate the Short
         id: generate
         # Keep going so a failed run still uploads its artefacts and history.
@@ -120,8 +142,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: short-${{ github.run_id }}
-          path: output/**
-          if-no-files-found: warn
+          path: |
+            output/**
+            build/**
+          if-no-files-found: ignore
           retention-days: 7
 
       - name: Mark the job as failed
