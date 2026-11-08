@@ -1,7 +1,26 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": null,
-  "topics": [],
-  "scripts": []
+  "updated_at": "2026-11-08T19:06:19+00:00",
+  "topics": [
+    {
+      "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
+      "angle": "Instead of asking AI for conversational flashcards you have to manually retype, force it to output exact Cloze syntax in a code block for one-click bulk import.",
+      "why_it_matters": "Eliminates the tedious 45-minute friction of making active-recall cards without sacrificing card quality.",
+      "concrete_detail": "Prompt the model to use the exact syntax '{{c1::hidden answer}}' formatted as semicolon-separated lines, then save as a .txt file and use File > Import in Anki.",
+      "created_at": "2026-11-08T18:56:59+00:00",
+      "niche": "tech and AI tips for students",
+      "status": "uploaded",
+      "video_id": "yM-miYOxfoA",
+      "privacy_status": "private"
+    }
+  ],
+  "scripts": [
+    {
+      "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
+      "text": "Instead of asking AI for conversational flashcards you have to manually retype, force it to output exact Cloze. Eliminates the tedious 45-minute friction of making active-recall cards without sacrificing card quality. The trick is simple: Prompt the model to use the exact syntax '{{c1::hidden answer}}' formatted as semicolon-separated lines, then save as a .txt file and use File > Import in Anki. Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
+      "niche": "tech and AI tips for students",
+      "created_at": "2026-11-08T19:06:19+00:00"
+    }
+  ]
 }
