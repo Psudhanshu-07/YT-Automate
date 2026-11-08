@@ -13,15 +13,6 @@ on:
         description: "Generate the video but skip the YouTube upload"
         type: boolean
         default: false
-      privacy:
-        description: "Privacy override for this run only"
-        type: choice
-        options:
-          - config
-          - private
-          - unlisted
-          - public
-        default: public
 
 # Never let two runs write history.json at the same time.
 concurrency:
@@ -124,15 +115,14 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
-          PRIVACY: ${{ github.event.inputs.privacy || 'config' }}
         run: |
           set -euo pipefail
           args=()
           if [ "${DRY_RUN}" = "true" ]; then
             args+=(--dry-run)
           fi
-          if [ "${PRIVACY}" != "config" ] && [ -n "${PRIVACY}" ]; then
-            args+=(--privacy "${PRIVACY}")
+          if [ "${DRY_RUN}" != "true" ]; then
+            args+=(--privacy public)
           fi
           echo "Running: python main.py ${args[*]:-}"
           python main.py "${args[@]}"

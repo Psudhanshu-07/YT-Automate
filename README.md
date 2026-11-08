@@ -279,8 +279,9 @@ footage. Nothing else is required; `GITHUB_TOKEN` is provided automatically.
 1. **Actions -> Produce YouTube Short -> Run workflow**.
 2. First run: set **dry_run** to `true`. This produces the video but publishes
    nothing. Check the logs and the "YouTube Short produced" summary.
-3. Second run: **dry_run** = `false`, **privacy** = `private` (review mode).
-4. Open **YouTube Studio** to watch the private video. If the YouTube app is in
+3. For a real upload, set **dry_run** to `false`. Action-triggered uploads are
+   forced to **public**; there is no private/unlisted override in the workflow.
+4. Open **YouTube Studio** to confirm the public video. If the YouTube app is in
    "Testing" mode and your refresh token is older than 7 days, redo step 7.
 
 > A failed run still uploads the produced video as an artifact
@@ -535,7 +536,8 @@ keep the niche focused, and do not publish content you would not defend.
 ## Scheduling
 
 * `.github/workflows/shorts.yml` runs three times daily and can be started
-  manually (`workflow_dispatch`) with the `dry_run` and `privacy` inputs.
+  manually (`workflow_dispatch`) with the `dry_run` input. Non-dry-run Action
+  uploads are forced to public.
 * `concurrency` prevents two runs from writing `history.json` at once.
 * Cron is UTC and GitHub may delay scheduled jobs by several minutes under load.
 * Scheduled workflows run only on the **default branch**.
@@ -717,7 +719,7 @@ Things that cannot be automated away (all one-time):
 - [ ] Run `python get_refresh_token.py --client-secrets client_secret.json`.
 - [ ] Add the required repository secrets (`PEXELS_API_KEY` is optional).
 - [ ] Run the workflow manually with `dry_run=true`, then use
-      `privacy=public` after reviewing the generated video.
+      `dry_run=false` for a public upload.
 - [ ] Decide whether to publish the OAuth app (to stop 7-day token expiry).
 - [ ] Confirm the three daily public cron runs are enabled.
 - [ ] Optional: drop a royalty-free track into `assets/music/`.
