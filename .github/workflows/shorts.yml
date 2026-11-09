@@ -1,12 +1,14 @@
 name: Produce YouTube Short
 
-# GitHub's scheduler can delay or occasionally miss an individual cron minute.
-# The watchdog wakes every 15 minutes, but the gate below permits generation
-# only once during each of the four target UTC hours.
+# Four daily runs at 07:00, 11:00, 15:00, and 19:00 UTC. GitHub cron is UTC
+# and may delay a scheduled run by a few minutes under platform load.
 # history.json prevents topic repeats.
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "0 7 * * *"
+    - cron: "0 11 * * *"
+    - cron: "0 15 * * *"
+    - cron: "0 19 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -36,48 +38,8 @@ env:
   HF_HOME: ${{ github.workspace }}/.cache/huggingface
 
 jobs:
-  schedule_gate:
-    name: Check scheduled upload window
-    runs-on: ubuntu-latest
-    outputs:
-      run: ${{ steps.gate.outputs.run }}
-    steps:
-      - name: Check out repository state
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-
-      - name: Check current UTC slot
-        id: gate
-        shell: bash
-        run: |
-          set -euo pipefail
-          hour="$(date -u +%H)"
-          current_hour="$(date -u +%Y-%m-%dT%H)"
-          case "${hour}" in
-            07|11|15|19) ;;
-            *)
-              echo "run=false" >> "$GITHUB_OUTPUT"
-              echo "Outside an upload window (${current_hour} UTC)."
-              exit 0
-              ;;
-          esac
-
-          last_update="$(git show HEAD:history.json 2>/dev/null | \
-            python -c 'import json, sys; print(json.load(sys.stdin).get("updated_at", ""))' || true)"
-          if [[ "${last_update}" == "${current_hour}"* ]]; then
-            echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "This UTC upload window already completed (${current_hour})."
-            exit 0
-          fi
-
-          echo "run=true" >> "$GITHUB_OUTPUT"
-          echo "Starting the upload for ${current_hour} UTC."
-
   produce:
     name: Generate and upload
-    needs: schedule_gate
-    if: needs.schedule_gate.outputs.run == 'true' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 45
 
@@ -168,6 +130,8 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          REQUESTED_LANGUAGE: ${{ github.event.inputs.language || '' }}
+          SCHEDULE_EXPRESSION: ${{ github.event.schedule || 'manual' }}
         run: |
           set -euo pipefail
           args=()
@@ -177,13 +141,11 @@ jobs:
           if [ "${DRY_RUN}" != "true" ]; then
             args+=(--privacy public)
           fi
-          requested_language="${{ github.event.inputs.language || '' }}"
-          hour="$(date -u +%H)"
-          case "${requested_language:-${hour}}" in
-            hi|07|15)
+          case "${REQUESTED_LANGUAGE:-${SCHEDULE_EXPRESSION}}" in
+            hi|"0 7 * * *"|"0 15 * * *")
               args+=(--language hi)
               ;;
-            en|11|19)
+            en|"0 11 * * *"|"0 19 * * *")
               args+=(--language en)
               ;;
             *)

@@ -293,10 +293,8 @@ if Gemini is unavailable or its quota is exhausted. Nothing else is required;
 
 ### 10. Public automation
 
-The workflow is configured for four public Shorts per day during the 07:00,
-11:00, 15:00, and 19:00 UTC windows. A lightweight 15-minute watchdog handles
-GitHub scheduler delays and runs at most once per window. `config.yaml` also uses
-`upload.privacy_status: "public"` for
+The workflow is configured for four public Shorts per day at 07:00, 11:00,
+15:00, and 19:00 UTC. `config.yaml` also uses `upload.privacy_status: "public"` for
 local runs. Change the cron expressions in
 [`.github/workflows/shorts.yml`](./.github/workflows/shorts.yml) if you need
 different times.
@@ -456,7 +454,10 @@ Edit the cron line in `.github/workflows/shorts.yml`:
 ```yaml
 on:
   schedule:
-    - cron: "*/15 * * * *"  # watchdog; gate permits 07, 11, 15, 19 UTC
+    - cron: "0 7 * * *"    # Hindi, 12:30 IST
+    - cron: "0 11 * * *"   # English, 16:30 IST
+    - cron: "0 15 * * *"   # Hindi, 20:30 IST
+    - cron: "0 19 * * *"   # English, 00:30 IST
 ```
 
 ---
@@ -554,8 +555,6 @@ keep the niche focused, and do not publish content you would not defend.
   uploads are forced to public.
 * `concurrency` prevents two runs from writing `history.json` at once.
 * Cron is UTC and GitHub may delay scheduled jobs by several minutes under load.
-  The watchdog checks every 15 minutes and `history.json` prevents duplicate
-  uploads within a target hour.
 * Scheduled workflows run only on the **default branch**.
 * GitHub disables scheduled workflows after **60 days of repository inactivity**.
   Any push, or manually running the workflow, resets that timer. If your channel
