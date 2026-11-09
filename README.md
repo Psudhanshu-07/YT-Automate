@@ -397,7 +397,7 @@ captions:
   highlight_color: "&H0000E5FF"
   outline: 5
   shadow: 2
-  margin_v: 520                # distance from the bottom edge, in pixels
+  margin_v: 260                # distance from the bottom edge, in pixels
   uppercase: true
   max_chars_per_line: 20
   max_lines: 2
@@ -415,7 +415,16 @@ video:
   fade_seconds: 0.18           # applied only at the start and end
   crf: 21
   preset: "veryfast"
+  background_color: "0x09111F"  # textured canvas behind the footage card
+  accent_color: "0x00E5FF"      # card border and background glow
+  card_width_ratio: 0.88
+  card_height_ratio: 0.62
+  card_top_ratio: 0.07
 ```
+
+The renderer places each stock clip in a centered, animated portrait card over a
+subtly textured branded canvas. Captions sit in the reserved lower area so the
+editing remains readable instead of covering the footage.
 
 ### Upload
 

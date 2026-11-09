@@ -108,7 +108,7 @@ captions:
   outline_color: "&H00000000"
   outline: 5
   shadow: 2
-  margin_v: 520
+  margin_v: 260
   uppercase: true
   max_chars_per_line: 20
   max_lines: 2
@@ -152,6 +152,12 @@ video:
   audio_bitrate: "192k"
   preview_position: 0.35       # frame timestamp (fraction) for preview.jpg
   encode_timeout_seconds: 1800
+  # Creator-style composition: footage card over a textured branded canvas.
+  background_color: "0x09111F"
+  accent_color: "0x00E5FF"
+  card_width_ratio: 0.88
+  card_height_ratio: 0.62
+  card_top_ratio: 0.07
 
 # -----------------------------------------------------------------------------
 # YouTube upload

@@ -3,7 +3,8 @@
 The render is a single FFmpeg invocation with an inline filter graph (which is
 also written to ``filter.txt`` in the scratch directory for inspection):
 
-* every stock clip is scaled to cover 1080x1920 and centre-cropped;
+* every stock clip is scaled into a framed portrait card;
+* the card is composited over a textured, branded background;
 * clips are trimmed to the measured narration length and faded in/out;
 * the burned-in ASS captions are overlaid on the concatenated base;
 * the music bed is sidechain-compressed under the voice (optional);
@@ -87,11 +88,13 @@ def _video_chain(
     segment: ClipSegment,
     config: AppConfig,
     *,
+    frame_width: int,
+    frame_height: int,
     first: bool = False,
     last: bool = False,
 ) -> str:
     video = config.video
-    width, height = video.width, video.height
+    width, height = frame_width, frame_height
     fade = min(video.fade_seconds, segment.duration / 4)
 
     # Overscan the source and animate the crop window so even a static stock
@@ -116,6 +119,7 @@ def _video_chain(
             "eq=contrast=1.06:saturation=1.12:brightness=0.01",
             "unsharp=5:5:0.35:5:5:0",
             "vignette=PI/5",
+            f"drawbox=x=0:y=0:w=iw-1:h=ih-1:color={video.accent_color}@0.82:t=6",
         ]
     )
     if fade > 0 and first:
@@ -138,18 +142,42 @@ def _build_filters(
 ) -> list[str]:
     """Return filter-graph chains (joined with ';' by the caller)."""
 
+    video = config.video
+    card_width = int(video.width * video.card_width_ratio) // 2 * 2
+    card_height = int(video.height * video.card_height_ratio) // 2 * 2
+    card_x = (video.width - card_width) // 2
+    card_y = int(video.height * video.card_top_ratio) // 2 * 2
     lines: list[str] = [
-        _video_chain(segment, config, first=index == 0, last=index == len(segments) - 1)
+        _video_chain(
+            segment,
+            config,
+            frame_width=card_width,
+            frame_height=card_height,
+            first=index == 0,
+            last=index == len(segments) - 1,
+        )
         for index, segment in enumerate(segments)
     ]
 
     concat_inputs = "".join(f"[v{segment.index}]" for segment in segments)
     lines.append(f"{concat_inputs}concat=n={len(segments)}:v=1:a=0[vbase]")
+    lines.append(
+        f"color=c={video.background_color}:s={video.width}x{video.height}:r={video.fps}:"
+        f"d={total_duration:.3f},noise=alls=10:allf=t+u,"
+        f"drawgrid=w=180:h=180:t=1:c={video.accent_color}@0.08,"
+        "vignette=PI/3,"
+        f"drawbox=x={card_x - 14}:y={card_y - 14}:w={card_width + 28}:h={card_height + 28}:"
+        f"color={video.accent_color}@0.14:t=18[bg]"
+    )
+    lines.append(
+        f"[bg][vbase]overlay=x={card_x}:y={card_y}:eof_action=pass:shortest=1,"
+        "format=yuv420p[vframed]"
+    )
 
     ass_options = _escape_filter_path(captions_relative)
     if config.captions.fonts_dir:
         ass_options += f":fontsdir={_escape_filter_path(config.captions.fonts_dir)}"
-    lines.append(f"[vbase]ass={ass_options}[vout]")
+    lines.append(f"[vframed]ass={ass_options}[vout]")
 
     voice_index = len(segments)
     duration = f"{total_duration:.3f}"

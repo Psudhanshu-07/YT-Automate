@@ -155,6 +155,11 @@ class VideoConfig:
     audio_bitrate: str = "192k"
     preview_position: float = 0.35
     encode_timeout_seconds: int = 1800
+    background_color: str = "0x09111F"
+    accent_color: str = "0x00E5FF"
+    card_width_ratio: float = 0.88
+    card_height_ratio: float = 0.62
+    card_top_ratio: float = 0.07
 
 
 @dataclass(frozen=True)
@@ -387,6 +392,15 @@ def _validate(config: AppConfig) -> None:
         problems.append("video.preview_position must be between 0.0 and 0.95")
     if video.encode_timeout_seconds < 60:
         problems.append("video.encode_timeout_seconds must be at least 60")
+    for name in ("background_color", "accent_color"):
+        if not re.fullmatch(r"0x[0-9A-Fa-f]{6}", getattr(video, name)):
+            problems.append(f"video.{name} must look like 0xRRGGBB")
+    if not 0.5 <= video.card_width_ratio <= 1.0:
+        problems.append("video.card_width_ratio must be between 0.5 and 1.0")
+    if not 0.4 <= video.card_height_ratio <= 0.85:
+        problems.append("video.card_height_ratio must be between 0.4 and 0.85")
+    if not 0.0 <= video.card_top_ratio <= 0.3:
+        problems.append("video.card_top_ratio must be between 0.0 and 0.3")
 
     script = config.script
     if script.min_words < 30:
