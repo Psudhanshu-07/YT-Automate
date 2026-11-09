@@ -145,8 +145,8 @@ video:
   height: 1920
   fps: 30
   max_duration_seconds: 57     # Shorts must be < 60s; keep headroom
-  clip_max_seconds: 5.5        # how long one stock clip stays on screen
-  fade_seconds: 0.3
+  clip_max_seconds: 4.2        # faster visual rhythm for creator-style edits
+  fade_seconds: 0.18
   crf: 21
   preset: "veryfast"
   audio_bitrate: "192k"

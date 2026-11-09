@@ -406,8 +406,8 @@ video:
   height: 1920
   fps: 30
   max_duration_seconds: 57     # hard ceiling is 58 in code
-  clip_max_seconds: 5.5        # how long one stock clip stays on screen
-  fade_seconds: 0.3
+  clip_max_seconds: 4.2        # faster visual rhythm for creator-style edits
+  fade_seconds: 0.18           # applied only at the start and end
   crf: 21
   preset: "veryfast"
 ```
@@ -486,12 +486,13 @@ chosen (favour ~1080p, avoid huge 4K downloads), streamed to disk with a size
 cap, duration-checked with ffprobe, and shuffled so runs differ. Pexels is used
 when `PEXELS_API_KEY` is set; otherwise Wikimedia Commons is queried without a
 key. Nothing is cached between runs. If no source yields a usable clip, a
-gradient clip is synthesised.
+gradient clip is synthesised with animated texture and a grid rather than a
+flat background.
 
 **Render** (`src/video.py`)
 A single FFmpeg invocation with a filter-graph script file:
-`fps -> scale(cover) -> optional hflip -> crop 1080x1920 -> eq -> fades ->
-concat -> ass burn-in`, plus an audio graph that splits the voice, sidechain-
+`fps -> overscan -> animated crop/pan -> optional hflip -> colour grade ->
+sharpen -> concat -> ass burn-in`, plus an audio graph that splits the voice, sidechain-
 compresses the music under it, then pads and limits the mix. Output is validated
 for H.264, AAC, exact frame size, and duration < 58 s.
 

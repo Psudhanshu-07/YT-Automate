@@ -83,27 +83,44 @@ def build_timeline(clips: Sequence[Clip], total_duration: float, config: AppConf
     return segments
 
 
-def _video_chain(segment: ClipSegment, config: AppConfig) -> str:
+def _video_chain(
+    segment: ClipSegment,
+    config: AppConfig,
+    *,
+    first: bool = False,
+    last: bool = False,
+) -> str:
     video = config.video
     width, height = video.width, video.height
     fade = min(video.fade_seconds, segment.duration / 4)
 
+    # Overscan the source and animate the crop window so even a static stock
+    # shot has the subtle push/pan treatment expected in a creator edit.
+    overscan_width = int(math.ceil(width * 1.12 / 2) * 2)
+    overscan_height = int(math.ceil(height * 1.12 / 2) * 2)
+    motion = 0.12 + (segment.index % 3) * 0.04
+    direction = 1 if segment.index % 2 == 0 else -1
+    x_motion = f"(iw-ow)/2+{direction * motion:.3f}*(iw-ow)*sin(n/180)"
+    y_motion = f"(ih-oh)/2+{direction * motion * 0.7:.3f}*(ih-oh)*cos(n/220)"
     chain = [
         f"fps={video.fps}",
-        f"scale={width}:{height}:force_original_aspect_ratio=increase",
+        f"scale={overscan_width}:{overscan_height}:force_original_aspect_ratio=increase",
     ]
     if segment.flip:
         chain.append("hflip")
     chain.extend(
         [
-            f"crop={width}:{height}",
+            f"crop={width}:{height}:{x_motion}:{y_motion}",
             "setsar=1",
             "format=yuv420p",
-            "eq=contrast=1.03:saturation=1.05",
+            "eq=contrast=1.06:saturation=1.12:brightness=0.01",
+            "unsharp=5:5:0.35:5:5:0",
+            "vignette=PI/5",
         ]
     )
-    if fade > 0:
+    if fade > 0 and first:
         chain.append(f"fade=t=in:st=0:d={fade:.3f}")
+    if fade > 0 and last:
         chain.append(f"fade=t=out:st={max(0.0, segment.duration - fade):.3f}:d={fade:.3f}")
     chain.append("setpts=PTS-STARTPTS")
     return f"[{segment.index}:v]" + ",".join(chain) + f"[v{segment.index}]"
@@ -121,7 +138,10 @@ def _build_filters(
 ) -> list[str]:
     """Return filter-graph chains (joined with ';' by the caller)."""
 
-    lines: list[str] = [_video_chain(segment, config) for segment in segments]
+    lines: list[str] = [
+        _video_chain(segment, config, first=index == 0, last=index == len(segments) - 1)
+        for index, segment in enumerate(segments)
+    ]
 
     concat_inputs = "".join(f"[v{segment.index}]" for segment in segments)
     lines.append(f"{concat_inputs}concat=n={len(segments)}:v=1:a=0[vbase]")

@@ -306,7 +306,10 @@ def synthesise_gradient_clip(
     )
     gradient_source = (
         f"gradients=s={width}x{height}:r=30:c0={colors[0]}:c1={colors[1]}:c2={colors[2]}:n=2:"
-        f"speed=0.06:d={max(1.0, duration):.2f}"
+        f"speed=0.06:d={max(1.0, duration):.2f},"
+        "noise=alls=9:allf=t+u,"
+        "drawgrid=w=270:h=270:t=2:c=white@0.09,"
+        "vignette=PI/4"
     )
     try:
         run(
