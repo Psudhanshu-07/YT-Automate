@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-08T22:44:00+00:00",
+  "updated_at": "2026-11-09T04:33:41+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -24,6 +24,17 @@
       "status": "uploaded",
       "video_id": "G9gJoeGQ2aw",
       "privacy_status": "public"
+    },
+    {
+      "topic": "Why Ballpoint Pens Cause Hand Cramps Below a 60-Degree Angle",
+      "angle": "Writing fatigue in long exams is caused by the pen's brass collar scraping paper, not muscle weakness.",
+      "why_it_matters": "Students can eliminate hand strain in 3-hour written exams simply by adjusting their pen tilt to engage rolling friction.",
+      "concrete_detail": "Keep the pen above 60 degrees relative to the paper so the tungsten carbide ball rolls instead of dragging the outer brass socket.",
+      "created_at": "2026-11-09T04:15:01+00:00",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "status": "uploaded",
+      "video_id": "4mMX4Z8Zi38",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -38,12 +49,13 @@
       "text": "Consolidating tools beats adding another app, because your notes stay in one searchable place. Every extra app adds a place to lose notes and a subscription to forget. The trick is simple: Pick a single free notes app, import two old documents, and delete the duplicate shortcuts. Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
       "niche": "tech and AI tips for students",
       "created_at": "2026-11-08T22:44:00+00:00"
+    },
+    {
+      "topic": "Why Ballpoint Pens Cause Hand Cramps Below a 60-Degree Angle",
+      "text": "Writing fatigue in long exams is caused by the pen's brass collar scraping paper, not muscle weakness. Students can eliminate hand strain in 3-hour written exams simply by adjusting their pen tilt to engage rolling friction. The trick is simple: Keep the pen above 60 degrees relative to the paper so the tungsten carbide ball rolls instead of dragging the outer brass socket. Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "created_at": "2026-11-09T04:33:41+00:00"
     }
   ],
-  "visuals": [
-    {
-      "niche": "tech and AI tips for students",
-      "source_id": "186965042"
-    }
-  ]
+  "visuals": []
 }
