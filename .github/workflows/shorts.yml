@@ -13,6 +13,13 @@ on:
         description: "Generate the video but skip the YouTube upload"
         type: boolean
         default: false
+      language:
+        description: "Narration language for a manual run"
+        type: choice
+        options:
+          - en
+          - hi
+        default: en
 
 # Never let two runs write history.json at the same time.
 concurrency:
@@ -170,12 +177,13 @@ jobs:
           if [ "${DRY_RUN}" != "true" ]; then
             args+=(--privacy public)
           fi
+          requested_language="${{ github.event.inputs.language || '' }}"
           hour="$(date -u +%H)"
-          case "${hour}" in
-            07|15)
+          case "${requested_language:-${hour}}" in
+            hi|07|15)
               args+=(--language hi)
               ;;
-            11|19)
+            en|11|19)
               args+=(--language en)
               ;;
             *)
