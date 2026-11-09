@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-09T04:33:41+00:00",
+  "updated_at": "2026-11-09T13:40:26+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -35,6 +35,17 @@
       "status": "uploaded",
       "video_id": "4mMX4Z8Zi38",
       "privacy_status": "public"
+    },
+    {
+      "topic": "Why Plastic Rulers Smear Gel Ink (And the Capillary Gap Fix)",
+      "angle": "Ink smudges on exam papers are not caused by dragging friction, but by capillary action drawing liquid ink into the narrow gap between flat plastic and paper fibers.",
+      "why_it_matters": "Prevents ruined geometry diagrams and illegible graph axes during high-stakes board exams.",
+      "concrete_detail": "Stick two layers of transparent tape 1 mm behind the beveled measurement edge on the ruler's underside to create a 0.3 mm air gap that breaks the ink meniscus.",
+      "created_at": "2026-11-09T13:26:39+00:00",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "status": "uploaded",
+      "video_id": "HPId8G0axrA",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -55,6 +66,12 @@
       "text": "Writing fatigue in long exams is caused by the pen's brass collar scraping paper, not muscle weakness. Students can eliminate hand strain in 3-hour written exams simply by adjusting their pen tilt to engage rolling friction. The trick is simple: Keep the pen above 60 degrees relative to the paper so the tungsten carbide ball rolls instead of dragging the outer brass socket. Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
       "created_at": "2026-11-09T04:33:41+00:00"
+    },
+    {
+      "topic": "Why Plastic Rulers Smear Gel Ink (And the Capillary Gap Fix)",
+      "text": "Dragging your ruler across fresh ink is not what ruins your exam diagrams. Gel pens deposit liquid ink that sits on the paper surface, and pressing down flat plastic traps it instantly. Friction does not cause the smear. Capillary action pulls the wet ink into the microscopic gap between flat plastic and paper fibers. You can easily defeat this surface tension. Stick two layers of transparent tape 1 mm behind the beveled measurement edge on the ruler's underside to create a 0.3 mm air gap that breaks the ink meniscus. Blowing on the page will not protect your graphs. Flip your ruler over right now and apply those tape strips.",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "created_at": "2026-11-09T13:40:26+00:00"
     }
   ],
   "visuals": []
