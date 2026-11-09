@@ -91,19 +91,21 @@ class Script:
 
 _SYSTEM = """You write scripts for a YouTube Shorts channel.
 Niche: {niche}
+Output language: {language}
 
 You are not a generic content generator. Every script must be built around the
 provided unique angle and must contain a specific, verifiable detail. Never reuse
 a sentence pattern or opening from a past video.
 
 House style:
-- Spoken English, short sentences, second person ("you").
+- Spoken {language}, short sentences, second person where natural.
 - The first sentence is the hook: a concrete claim or tension, no greeting,
   no "in this video", no "hey guys".
 - No filler, no hype adjectives, no promises about income, health, or grades.
 - No stage directions, no emoji, no markdown.
-- Facts must be ordinary and safe: describe widely documented features of tools
-  and study techniques. Do not invent statistics or cite studies.
+- Facts must be ordinary and safe: describe widely documented science facts,
+  inventions, theories, and discoveries. Do not invent statistics or cite
+  studies. Include one concrete number, date, unit, or named scientific detail.
 - End with one action the viewer can take in the next minute.
 
 Return STRICT JSON with exactly these keys:
@@ -501,6 +503,7 @@ def generate_script(
 
     system = _SYSTEM.format(
         niche=config.niche,
+        language="Hindi" if config.channel.language == "hi" else "English",
         min_words=config.script.min_words,
         max_words=config.script.max_words,
         keyword_examples=_KEYWORD_EXAMPLES,

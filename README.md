@@ -152,6 +152,7 @@ CLI options:
 | --- | --- |
 | `--dry-run` | Generate the video, skip the upload, leave history unchanged |
 | `--privacy private\|unlisted\|public` | One-off override of `upload.privacy_status` |
+| `--language en\|hi` | One-off narration/voice language override; captions remain English |
 | `--config PATH` | Use a different config file |
 | `--log-level DEBUG\|INFO\|WARNING\|ERROR` | Verbosity |
 | `--keep-build` | Keep intermediate clips/audio/filter graph in `build/<run>/` |
@@ -441,9 +442,10 @@ Edit the cron line in `.github/workflows/shorts.yml`:
 ```yaml
 on:
   schedule:
-    - cron: "0 7 * * *"    # 07:00 UTC = 12:30 IST
-    - cron: "0 13 * * *"   # 13:00 UTC = 18:30 IST
-    - cron: "0 19 * * *"   # 19:00 UTC = 00:30 IST
+    - cron: "0 7 * * *"    # Hindi, 12:30 IST
+    - cron: "0 11 * * *"   # English, 16:30 IST
+    - cron: "0 15 * * *"   # Hindi, 20:30 IST
+    - cron: "0 19 * * *"   # English, 00:30 IST
 ```
 
 ---

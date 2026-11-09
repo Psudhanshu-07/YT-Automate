@@ -37,6 +37,7 @@ _WHISPER_MODELS = (
     "large-v3-turbo",
 )
 _LICENSE_VALUES = ("youtube", "creativeCommon")
+_LANGUAGE_VALUES = ("en", "hi")
 
 
 # ---------------------------------------------------------------------------
@@ -356,6 +357,12 @@ def _validate(config: AppConfig) -> None:
 
     if len(config.niche) > 300:
         problems.append("niche must be 300 characters or fewer")
+    if config.channel.language not in _LANGUAGE_VALUES:
+        problems.append(f"channel.language must be one of: {', '.join(_LANGUAGE_VALUES)}")
+    if config.upload.default_language not in _LANGUAGE_VALUES:
+        problems.append(
+            f"upload.default_language must be one of: {', '.join(_LANGUAGE_VALUES)}"
+        )
 
     video = config.video
     if video.width % 2 or video.height % 2:

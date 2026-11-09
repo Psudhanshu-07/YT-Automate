@@ -55,6 +55,7 @@ from src.voice import VoiceResult, synthesise_voiceover
 logger = get_logger("main")
 
 PRIVACY_CHOICES = ("private", "unlisted", "public")
+LANGUAGE_CHOICES = ("en", "hi")
 LOG_LEVELS = ("DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL")
 
 
@@ -83,6 +84,12 @@ def _parse_args(argv: Sequence[str] | None) -> argparse.Namespace:
         choices=PRIVACY_CHOICES,
         default=None,
         help="Override upload.privacy_status from config.yaml for this run.",
+    )
+    parser.add_argument(
+        "--language",
+        choices=LANGUAGE_CHOICES,
+        default=None,
+        help="Override channel.language for this run (en or hi).",
     )
     parser.add_argument(
         "--log-level",
@@ -429,6 +436,17 @@ def main(argv: Sequence[str] | None = None) -> int:
         config = dataclasses.replace(
             config,
             upload=dataclasses.replace(config.upload, privacy_status=args.privacy),
+        )
+    if args.language:
+        voice_by_language = {
+            "en": "en-IN-NeerjaNeural",
+            "hi": "hi-IN-SwaraNeural",
+        }
+        config = dataclasses.replace(
+            config,
+            channel=dataclasses.replace(config.channel, language=args.language),
+            upload=dataclasses.replace(config.upload, default_language=args.language),
+            voice=dataclasses.replace(config.voice, voice=voice_by_language[args.language]),
         )
 
     try:

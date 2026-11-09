@@ -37,7 +37,7 @@ _STOPWORDS = {
     "then", "there", "these", "they", "this", "to", "up", "use", "using", "was",
     "we", "what", "when", "which", "who", "why", "will", "with", "you", "your",
 }
-_WORD = re.compile(r"[a-z0-9]+")
+_WORD = re.compile(r"[^\W_]+", re.UNICODE)
 
 
 @dataclass(frozen=True)
@@ -264,6 +264,7 @@ _SYSTEM = """You are the research lead for a YouTube Shorts channel in the niche
 Your job is to propose ONE specific, original, genuinely useful video topic.
 
 Niche: {niche}
+Language: {language}
 
 Requirements for the topic:
 - Specific, not a broad category. Name the tool, technique, mistake, or situation.
@@ -272,6 +273,8 @@ Requirements for the topic:
 - Never repeat, paraphrase, or lightly reword a past topic.
 - No clickbait promises the video cannot keep, no medical/legal/financial advice.
 - Each proposal needs a distinctive angle that most videos on this subject miss.
+- Write every returned field in {language}. Keep scientific names and units in
+  their standard form when that improves accuracy.
 
 Return STRICT JSON with exactly these keys and string values:
 {{
@@ -409,7 +412,8 @@ def generate_topic(config: AppConfig, client: GeminiClient, history: Mapping[str
     past = topics_for_niche(history, config.niche)
     logger.info("Selecting a topic for niche %r (%d past topic(s))", config.niche, len(past))
 
-    system = _SYSTEM.format(niche=config.niche)
+    language = "Hindi" if config.channel.language == "hi" else "English"
+    system = _SYSTEM.format(niche=config.niche, language=language)
     prompt = _PROMPT.format(past=_prompt_history(past, config.ideas.history_prompt_limit))
 
     last_error: Exception | None = None

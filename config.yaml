@@ -7,7 +7,7 @@
 # Relative paths are resolved against the repository root.
 # =============================================================================
 
-niche: "tech and AI tips for students"
+niche: "science facts, friction, inventions, theories, and discoveries for Indian audiences"
 
 channel:
   name: "Shorts Agent"
@@ -78,7 +78,8 @@ quality_guard:
 # Voiceover (edge-tts, free, no key)
 # -----------------------------------------------------------------------------
 voice:
-  # Run `edge-tts --list-voices` for the full list.
+  # Run `edge-tts --list-voices` for the full list. The workflow overrides this
+  # per run for Hindi/English.
   voice: "en-US-AndrewNeural"
   rate: "+6%"
   pitch: "+0Hz"

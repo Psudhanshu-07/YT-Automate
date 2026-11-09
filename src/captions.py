@@ -101,6 +101,8 @@ def transcribe_words(
         segments, info = model.transcribe(
             str(audio_path),
             language=config.channel.language,
+            # Always render English captions; Whisper translates Hindi speech.
+            task="translate",
             beam_size=captions.whisper_beam_size,
             word_timestamps=True,
             vad_filter=True,
@@ -131,7 +133,7 @@ def transcribe_words(
         len(words),
         elapsed,
         captions.whisper_model,
-        getattr(info, "language", config.channel.language),
+        "English (translated)" if config.channel.language != "en" else "English",
     )
     return words
 
