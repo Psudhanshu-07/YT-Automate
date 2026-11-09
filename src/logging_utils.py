@@ -17,6 +17,7 @@ from typing import Iterator
 # Environment variables whose *values* must never appear in logs.
 SECRET_ENV_VARS: tuple[str, ...] = (
     "GEMINI_API_KEY",
+    "OPENROUTER_API_KEY",
     "PEXELS_API_KEY",
     "YT_CLIENT_ID",
     "YT_CLIENT_SECRET",

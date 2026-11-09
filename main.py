@@ -234,7 +234,7 @@ def _prepare_directories(config: AppConfig) -> tuple[str, Path, Path]:
     return run_id, run_dir, build_dir
 
 
-def _validate_environment(config: AppConfig, *, dry_run: bool) -> tuple[str, str]:
+def _validate_environment(config: AppConfig, *, dry_run: bool) -> tuple[str, str, str, str]:
     """Fail fast on missing binaries/secrets before doing expensive work."""
 
     if not ffmpeg_available():
@@ -246,7 +246,14 @@ def _validate_environment(config: AppConfig, *, dry_run: bool) -> tuple[str, str
             ),
         )
 
-    gemini_key = require_env("GEMINI_API_KEY", purpose="Gemini topic and script generation")
+    gemini_key = optional_env("GEMINI_API_KEY")
+    openrouter_key = optional_env("OPENROUTER_API_KEY")
+    if not gemini_key and not openrouter_key:
+        raise EnvironmentError_(
+            "No LLM API key is configured.",
+            hint="Set GEMINI_API_KEY and/or OPENROUTER_API_KEY in your environment or GitHub Actions secrets.",
+        )
+    openrouter_model = optional_env("OPENROUTER_MODEL", "openrouter/free")
     pexels_key = optional_env("PEXELS_API_KEY")
 
     if not dry_run:
@@ -254,7 +261,7 @@ def _validate_environment(config: AppConfig, *, dry_run: bool) -> tuple[str, str
         require_env("YT_CLIENT_SECRET", purpose="YouTube OAuth client secret")
         require_env("YT_REFRESH_TOKEN", purpose="YouTube OAuth refresh token")
 
-    return gemini_key, pexels_key
+    return gemini_key, openrouter_key, openrouter_model, pexels_key
 
 
 # ---------------------------------------------------------------------------
@@ -272,9 +279,16 @@ def _run(args: argparse.Namespace, config: AppConfig) -> int:
     logger.info("Privacy status: %s%s", config.upload.privacy_status, " (dry run)" if args.dry_run else "")
     _warn_if_public(config)
 
-    gemini_key, pexels_key = _validate_environment(config, dry_run=args.dry_run)
+    gemini_key, openrouter_key, openrouter_model, pexels_key = _validate_environment(
+        config, dry_run=args.dry_run
+    )
 
-    client = GeminiClient(gemini_key, config.llm)
+    client = GeminiClient(
+        gemini_key,
+        config.llm,
+        openrouter_api_key=openrouter_key,
+        openrouter_model=openrouter_model,
+    )
     history = load_history(config.history_path, config.niche)
 
     with log_stage(logger, "1/8 Choose a fresh topic"):

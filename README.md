@@ -268,12 +268,15 @@ secret**. Add exactly these names:
 | Secret | Value |
 | --- | --- |
 | `GEMINI_API_KEY` | From step 2 |
+| `OPENROUTER_API_KEY` | Optional fallback key from <https://openrouter.ai/keys> |
 | `YT_CLIENT_ID` | From the downloaded client JSON (`installed.client_id`) |
 | `YT_CLIENT_SECRET` | From the client JSON (`installed.client_secret`) |
 | `YT_REFRESH_TOKEN` | From step 7 |
 
 `PEXELS_API_KEY` is optional. If omitted, Wikimedia Commons is used for
-footage. Nothing else is required; `GITHUB_TOKEN` is provided automatically.
+footage. `OPENROUTER_API_KEY` is optional; when set, it is used automatically
+if Gemini is unavailable or its quota is exhausted. Nothing else is required;
+`GITHUB_TOKEN` is provided automatically.
 
 ### 9. Run the workflow manually
 
@@ -290,8 +293,8 @@ footage. Nothing else is required; `GITHUB_TOKEN` is provided automatically.
 
 ### 10. Public automation
 
-The workflow is configured for three public Shorts per day at 07:00, 13:00,
-and 19:00 UTC. `config.yaml` also uses `upload.privacy_status: "public"` for
+The workflow is configured for four public Shorts per day at 07:17, 11:17,
+15:17, and 19:17 UTC. `config.yaml` also uses `upload.privacy_status: "public"` for
 local runs. Change the cron expressions in
 [`.github/workflows/shorts.yml`](./.github/workflows/shorts.yml) if you need
 different times.
@@ -442,10 +445,10 @@ Edit the cron line in `.github/workflows/shorts.yml`:
 ```yaml
 on:
   schedule:
-    - cron: "0 7 * * *"    # Hindi, 12:30 IST
-    - cron: "0 11 * * *"   # English, 16:30 IST
-    - cron: "0 15 * * *"   # Hindi, 20:30 IST
-    - cron: "0 19 * * *"   # English, 00:30 IST
+    - cron: "17 7 * * *"   # Hindi, 12:47 IST
+    - cron: "17 11 * * *"  # English, 16:47 IST
+    - cron: "17 15 * * *"  # Hindi, 20:47 IST
+    - cron: "17 19 * * *"  # English, 00:47 IST
 ```
 
 ---
@@ -538,7 +541,7 @@ keep the niche focused, and do not publish content you would not defend.
 
 ## Scheduling
 
-* `.github/workflows/shorts.yml` runs three times daily and can be started
+* `.github/workflows/shorts.yml` runs four times daily and can be started
   manually (`workflow_dispatch`) with the `dry_run` input. Non-dry-run Action
   uploads are forced to public.
 * `concurrency` prevents two runs from writing `history.json` at once.
@@ -547,8 +550,12 @@ keep the niche focused, and do not publish content you would not defend.
 * GitHub disables scheduled workflows after **60 days of repository inactivity**.
   Any push, or manually running the workflow, resets that timer. If your channel
   can afford a gap, ignore it; otherwise add a monthly reminder to run it once.
-* For multiple Shorts per day, add more cron lines (e.g. `"0 */8 * * *"`). Each
-  run consumes a new topic and one `videos.insert` call from the daily bucket.
+* Each scheduled run consumes a new topic and one
+  `videos.insert` call from the daily bucket. Four runs are already configured;
+  add more cron lines only if you need additional uploads.
+* LLM calls try Gemini first, then OpenRouter (`openrouter/free` by default) if
+  Gemini fails or reaches a rate/quota limit. Store both keys as Actions secrets;
+  never put either key in `config.yaml` or source code.
 
 ---
 
@@ -724,7 +731,7 @@ Things that cannot be automated away (all one-time):
 - [ ] Run the workflow manually with `dry_run=true`, then use
       `dry_run=false` for a public upload.
 - [ ] Decide whether to publish the OAuth app (to stop 7-day token expiry).
-- [ ] Confirm the three daily public cron runs are enabled.
+- [ ] Confirm the four daily public cron runs are enabled.
 - [ ] Optional: drop a royalty-free track into `assets/music/`.
 - [ ] Optional: tune `config.yaml` (niche, voice, caption style, schedule).
 

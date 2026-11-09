@@ -1,14 +1,15 @@
 name: Produce YouTube Short
 
-# Four daily runs at 07:00, 11:00, 15:00, and 19:00 UTC: two Hindi and two
-# English Shorts. GitHub cron is always UTC and can run a few minutes late.
+# Four daily runs at 07:17, 11:17, 15:17, and 19:17 UTC: two Hindi and two
+# English Shorts. The non-zero minute avoids GitHub's top-of-hour load spikes.
+# GitHub cron is always UTC and can still run a few minutes late.
 # history.json prevents topic repeats.
 on:
   schedule:
-    - cron: "0 7 * * *"
-    - cron: "0 11 * * *"
-    - cron: "0 15 * * *"
-    - cron: "0 19 * * *"
+    - cron: "17 7 * * *"
+    - cron: "17 11 * * *"
+    - cron: "17 15 * * *"
+    - cron: "17 19 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -87,6 +88,8 @@ jobs:
       - name: Validate Actions secrets
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL: ${{ vars.OPENROUTER_MODEL || 'openrouter/free' }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
@@ -94,7 +97,9 @@ jobs:
         run: |
           set -euo pipefail
           missing=()
-          [ -n "${GEMINI_API_KEY}" ] || missing+=("GEMINI_API_KEY")
+          if [ -z "${GEMINI_API_KEY}" ] && [ -z "${OPENROUTER_API_KEY}" ]; then
+            missing+=("GEMINI_API_KEY or OPENROUTER_API_KEY")
+          fi
           if [ "${DRY_RUN}" != "true" ]; then
             [ -n "${YT_CLIENT_ID}" ] || missing+=("YT_CLIENT_ID")
             [ -n "${YT_CLIENT_SECRET}" ] || missing+=("YT_CLIENT_SECRET")
@@ -112,6 +117,8 @@ jobs:
         continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL: ${{ vars.OPENROUTER_MODEL || 'openrouter/free' }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
@@ -127,10 +134,10 @@ jobs:
             args+=(--privacy public)
           fi
           case "${{ github.event.schedule || 'manual' }}" in
-            "0 7 * * *"|"0 15 * * *")
+            "17 7 * * *"|"17 15 * * *")
               args+=(--language hi)
               ;;
-            "0 11 * * *"|"0 19 * * *")
+            "17 11 * * *"|"17 19 * * *")
               args+=(--language en)
               ;;
             *)
