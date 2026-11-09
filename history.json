@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-09T13:40:26+00:00",
+  "updated_at": "2026-11-09T16:09:31+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -46,6 +46,17 @@
       "status": "uploaded",
       "video_id": "HPId8G0axrA",
       "privacy_status": "public"
+    },
+    {
+      "topic": "पेंसिल लीड ग्रेड (HB vs 2B) और पेपर GSM का मिलान: OMR शीट फटने से बचाएं",
+      "angle": "छात्र अक्सर गहरी लिखावट के लिए 2B/4B चुनते हैं, लेकिन 70-75 GSM वाली पतली नोटबुक या OMR शीट पर ये लीड कागज़ के रेशे उखाड़ देते हैं, जबकि HB/F ग्रेड कम घर्षण में साफ मिटती है।",
+      "why_it_matters": "परीक्षा में OMR बबल फटने या उत्तर पुस्तिका फटने से बचाता है, साथ ही मिटाने में लगने वाला समय आधा करता है।",
+      "concrete_detail": "स्क्रिप्ट में बताएं: 75 GSM पेपर पर HB/F ग्रेड; 100+ GSM स्केच पेपर पर ही 2B/4B इस्तेमाल करें।",
+      "created_at": "2026-11-09T15:57:47+00:00",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "status": "uploaded",
+      "video_id": "5SogC2OtH4Q",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -72,6 +83,12 @@
       "text": "Dragging your ruler across fresh ink is not what ruins your exam diagrams. Gel pens deposit liquid ink that sits on the paper surface, and pressing down flat plastic traps it instantly. Friction does not cause the smear. Capillary action pulls the wet ink into the microscopic gap between flat plastic and paper fibers. You can easily defeat this surface tension. Stick two layers of transparent tape 1 mm behind the beveled measurement edge on the ruler's underside to create a 0.3 mm air gap that breaks the ink meniscus. Blowing on the page will not protect your graphs. Flip your ruler over right now and apply those tape strips.",
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
       "created_at": "2026-11-09T13:40:26+00:00"
+    },
+    {
+      "topic": "पेंसिल लीड ग्रेड (HB vs 2B) और पेपर GSM का मिलान: OMR शीट फटने से बचाएं",
+      "text": "छात्र अक्सर गहरी लिखावट के लिए 2B/4B चुनते हैं, लेकिन 70-75 GSM वाली पतली नोटबुक या OMR शीट. परीक्षा में OMR बबल फटने या उत्तर पुस्तिका फटने से बचाता है, साथ ही मिटाने में लगने वाला समय आधा करता है। The trick is simple: स्क्रिप्ट में बताएं: 75 GSM पेपर पर HB/F ग्रेड; 100+ GSM स्केच पेपर पर ही 2B/4B इस्तेमाल करें। Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "created_at": "2026-11-09T16:09:31+00:00"
     }
   ],
   "visuals": []
