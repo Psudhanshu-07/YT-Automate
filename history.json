@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-10T15:39:29+00:00",
+  "updated_at": "2026-11-10T18:25:58+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -68,6 +68,17 @@
       "status": "uploaded",
       "video_id": "UnOK4ne8b1o",
       "privacy_status": "public"
+    },
+    {
+      "topic": "The DIY Friction Coefficient Test: How to Check if Your Notebook Will Survive OMR Scans",
+      "angle": "Most students don't realize their regular notebook will tear or smear under OMR scanning due to paper fiber alignment - you can test this in 60 seconds with a coin roll.",
+      "why_it_matters": "Students can use this quick test to choose appropriate paper before exam assignments, preventing OMR sheet damage and last-minute failures.",
+      "concrete_detail": "Roll a 1-rupee coin against the paper edge and measure the time it takes to slide past - slower than 2 seconds means good OMR compatibility",
+      "created_at": "2026-11-10T18:23:32+00:00",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "status": "uploaded",
+      "video_id": "_uL4lyogZBU",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -106,12 +117,18 @@
       "text": "अधिकांश वीडियो केवल 'ओबलक' बनाना दिखाते हैं, लेकिन यह बताता है कि 2:1 अनुपात (कॉर्न स्टार्च:पानी) और अचानक. छात्र 60 सेकंड में एक सस्ता, दोहराने योग्य लैब सेटअप सीखते हैं जो शियर-थिकनिंग फ्लूइड के वास्तविक इंजीनियरिंग एप्लिकेशन (बॉडी आर्मर, स्पोर्ट्स गियर) को तुरंत डेमो करता है। The trick is simple: ठीक 200 ग्राम कॉर्न स्टार्च में 100 मिली पानी मिलाएं; मिश्रण को 2 सेकंड में उंगली से पंच करें (ठोस महसूस होगा) बनाम 5 सेकंड में धीरे डुबोएं (तरल बहेगा)। Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
       "created_at": "2026-11-10T15:39:29+00:00"
+    },
+    {
+      "topic": "The DIY Friction Coefficient Test: How to Check if Your Notebook Will Survive OMR Scans",
+      "text": "Your notebook might fail an OMR scan Paper fiber alignment decides whether sheets tear or smear under high-speed scanner rollers. Grab a one-rupee coin, roll it firmly along the page edge, and time the slide — if it takes longer than two seconds the fibers hold together and the sheet survives the scan. Most students blame the scanner when the real culprit is cheap paper with loose grain. Test your notebook today with a coin and swap to a slower-slide pad before your next OMR exam.",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "created_at": "2026-11-10T18:25:58+00:00"
     }
   ],
   "visuals": [
     {
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
-      "source_id": "186965042"
+      "source_id": "122128119"
     }
   ]
 }
