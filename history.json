@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-10T18:25:58+00:00",
+  "updated_at": "2026-11-10T21:32:20+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -79,6 +79,17 @@
       "status": "uploaded",
       "video_id": "_uL4lyogZBU",
       "privacy_status": "public"
+    },
+    {
+      "topic": "शार्पनर में पेंसिल नहीं शार्पनर घुमाएं: टॉर्शनल स्ट्रेस से लेड टूटना रोकें",
+      "angle": "पेंसिल घुमाने से ग्रेफाइट कोर पर आंतरिक मरोड़ (torsional shear) पैदा होती है, जबकि कटर घुमाने से ब्लेड का वेज एंगल सही कटिंग फोर्स लगाता है।",
+      "why_it_matters": "लिखते समय लेड की नोक बार-बार अंदर से चटककर टूटने की समस्या तुरंत खत्म होती है और पेंसिल दोगुनी चलती है।",
+      "concrete_detail": "पेंसिल को एक हाथ में 180 डिग्री स्थिर रखें और शार्पनर को क्लॉकवाइज केवल 90-डिग्री के छोटे स्ट्रोक्स में घुमाएं।",
+      "created_at": "2026-11-10T21:22:50+00:00",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "status": "uploaded",
+      "video_id": "1KxSmOv64X0",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -123,12 +134,18 @@
       "text": "Your notebook might fail an OMR scan Paper fiber alignment decides whether sheets tear or smear under high-speed scanner rollers. Grab a one-rupee coin, roll it firmly along the page edge, and time the slide — if it takes longer than two seconds the fibers hold together and the sheet survives the scan. Most students blame the scanner when the real culprit is cheap paper with loose grain. Test your notebook today with a coin and swap to a slower-slide pad before your next OMR exam.",
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
       "created_at": "2026-11-10T18:25:58+00:00"
+    },
+    {
+      "topic": "शार्पनर में पेंसिल नहीं शार्पनर घुमाएं: टॉर्शनल स्ट्रेस से लेड टूटना रोकें",
+      "text": "पेंसिल घुमाने से ग्रेफाइट कोर पर आंतरिक मरोड़ (torsional shear) पैदा होती है, जबकि कटर घुमाने से ब्लेड. लिखते समय लेड की नोक बार-बार अंदर से चटककर टूटने की समस्या तुरंत खत्म होती है और पेंसिल दोगुनी चलती है। The trick is simple: पेंसिल को एक हाथ में 180 डिग्री स्थिर रखें और शार्पनर को क्लॉकवाइज केवल 90-डिग्री के छोटे स्ट्रोक्स में घुमाएं। Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "created_at": "2026-11-10T21:32:20+00:00"
     }
   ],
   "visuals": [
     {
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
-      "source_id": "122128119"
+      "source_id": "186965042"
     }
   ]
 }
