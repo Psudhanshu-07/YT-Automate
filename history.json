@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-09T16:09:31+00:00",
+  "updated_at": "2026-11-10T15:39:29+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -57,6 +57,17 @@
       "status": "uploaded",
       "video_id": "5SogC2OtH4Q",
       "privacy_status": "public"
+    },
+    {
+      "topic": "कॉर्न स्टार्च से नॉन-न्यूटोनियन फ्लूइड बनाकर 'इम्पैक्ट प्रोटेक्शन' टेस्ट करना",
+      "angle": "अधिकांश वीडियो केवल 'ओबलक' बनाना दिखाते हैं, लेकिन यह बताता है कि 2:1 अनुपात (कॉर्न स्टार्च:पानी) और अचानक झटके (impact) बनाम धीमे दबाव में विस्कोसिटी कैसे बदलती है, जिसे छात्र अपने फोन केस या घुटने के पैड डिज़ाइन में अप्लाई कर सकते हैं।",
+      "why_it_matters": "छात्र 60 सेकंड में एक सस्ता, दोहराने योग्य लैब सेटअप सीखते हैं जो शियर-थिकनिंग फ्लूइड के वास्तविक इंजीनियरिंग एप्लिकेशन (बॉडी आर्मर, स्पोर्ट्स गियर) को तुरंत डेमो करता है।",
+      "concrete_detail": "ठीक 200 ग्राम कॉर्न स्टार्च में 100 मिली पानी मिलाएं; मिश्रण को 2 सेकंड में उंगली से पंच करें (ठोस महसूस होगा) बनाम 5 सेकंड में धीरे डुबोएं (तरल बहेगा)।",
+      "created_at": "2026-11-10T15:35:33+00:00",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "status": "uploaded",
+      "video_id": "UnOK4ne8b1o",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -89,7 +100,18 @@
       "text": "छात्र अक्सर गहरी लिखावट के लिए 2B/4B चुनते हैं, लेकिन 70-75 GSM वाली पतली नोटबुक या OMR शीट. परीक्षा में OMR बबल फटने या उत्तर पुस्तिका फटने से बचाता है, साथ ही मिटाने में लगने वाला समय आधा करता है। The trick is simple: स्क्रिप्ट में बताएं: 75 GSM पेपर पर HB/F ग्रेड; 100+ GSM स्केच पेपर पर ही 2B/4B इस्तेमाल करें। Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
       "created_at": "2026-11-09T16:09:31+00:00"
+    },
+    {
+      "topic": "कॉर्न स्टार्च से नॉन-न्यूटोनियन फ्लूइड बनाकर 'इम्पैक्ट प्रोटेक्शन' टेस्ट करना",
+      "text": "अधिकांश वीडियो केवल 'ओबलक' बनाना दिखाते हैं, लेकिन यह बताता है कि 2:1 अनुपात (कॉर्न स्टार्च:पानी) और अचानक. छात्र 60 सेकंड में एक सस्ता, दोहराने योग्य लैब सेटअप सीखते हैं जो शियर-थिकनिंग फ्लूइड के वास्तविक इंजीनियरिंग एप्लिकेशन (बॉडी आर्मर, स्पोर्ट्स गियर) को तुरंत डेमो करता है। The trick is simple: ठीक 200 ग्राम कॉर्न स्टार्च में 100 मिली पानी मिलाएं; मिश्रण को 2 सेकंड में उंगली से पंच करें (ठोस महसूस होगा) बनाम 5 सेकंड में धीरे डुबोएं (तरल बहेगा)। Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "created_at": "2026-11-10T15:39:29+00:00"
     }
   ],
-  "visuals": []
+  "visuals": [
+    {
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "source_id": "186965042"
+    }
+  ]
 }
