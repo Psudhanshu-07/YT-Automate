@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-10T21:32:20+00:00",
+  "updated_at": "2026-11-11T00:12:22+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -90,6 +90,17 @@
       "status": "uploaded",
       "video_id": "1KxSmOv64X0",
       "privacy_status": "public"
+    },
+    {
+      "topic": "Why Peeling Sticky Notes Sideways Stops Them Falling Off Study Walls",
+      "angle": "Pulling notes upward bends paper fibers past their elastic limit, creating a permanent curl whose tension peels off the low-tack adhesive.",
+      "why_it_matters": "Keeps revision notes and formula reminders completely flat against walls or monitors instead of curling and falling off within hours.",
+      "concrete_detail": "Pull horizontally from left to right along the 76 mm adhesive strip instead of pulling vertically from the bottom edge.",
+      "created_at": "2026-11-11T00:01:23+00:00",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "status": "uploaded",
+      "video_id": "1HmGeWrk404",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -140,12 +151,13 @@
       "text": "पेंसिल घुमाने से ग्रेफाइट कोर पर आंतरिक मरोड़ (torsional shear) पैदा होती है, जबकि कटर घुमाने से ब्लेड. लिखते समय लेड की नोक बार-बार अंदर से चटककर टूटने की समस्या तुरंत खत्म होती है और पेंसिल दोगुनी चलती है। The trick is simple: पेंसिल को एक हाथ में 180 डिग्री स्थिर रखें और शार्पनर को क्लॉकवाइज केवल 90-डिग्री के छोटे स्ट्रोक्स में घुमाएं। Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
       "created_at": "2026-11-10T21:32:20+00:00"
+    },
+    {
+      "topic": "Why Peeling Sticky Notes Sideways Stops Them Falling Off Study Walls",
+      "text": "Your sticky notes keep falling off study walls because of how you peel them. Most students grab the bottom corner and yank upward, only to find their formula sheets on the floor hours later. When you pull vertically, you bend the paper fibers past their elastic limit. That permanent curl creates spring tension that constantly fights the weak pressure-sensitive glue. Instead, pull horizontally from left to right along the 76 mm adhesive strip instead of pulling vertically from the bottom edge. Smoothing it down harder will not fix it once the paper fibers are bent. Peel your next reminder sideways right now and stick it flat against your monitor.",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "created_at": "2026-11-11T00:12:22+00:00"
     }
   ],
-  "visuals": [
-    {
-      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
-      "source_id": "186965042"
-    }
-  ]
+  "visuals": []
 }
