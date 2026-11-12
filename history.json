@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-12T01:32:23+00:00",
+  "updated_at": "2026-11-12T16:14:12+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -112,6 +112,17 @@
       "status": "uploaded",
       "video_id": "dq9IYrc5n_E",
       "privacy_status": "public"
+    },
+    {
+      "topic": "Stop revising science facts, friction, inventions the hard way: try one-pass recall",
+      "angle": "Writing what you remember before opening the notes exposes gaps in five minutes.",
+      "why_it_matters": "Recall practice finds the two facts you actually failed to learn.",
+      "concrete_detail": "Set a 5-minute timer, write everything you remember on one page, then check only what you missed.",
+      "created_at": "2026-11-12T16:10:46+00:00",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "status": "uploaded",
+      "video_id": "fJttoi_nncs",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -174,6 +185,12 @@
       "text": "Use a phone's built‑in accelerometer to quantify desk friction and predict slippage without buying extra tools. Students can quickly identify slippery desks and fix them, preventing accidents and saving money. The trick is simple: Place the phone flat on the desk, tilt it from 0° to 45° while recording acceleration, then note the tilt angle where motion starts to calculate the static friction coefficient. Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
       "created_at": "2026-11-12T01:32:23+00:00"
+    },
+    {
+      "topic": "Stop revising science facts, friction, inventions the hard way: try one-pass recall",
+      "text": "Writing what you remember before opening the notes exposes gaps in five minutes. Recall practice finds the two facts you actually failed to learn. The trick is simple: Set a 5-minute timer, write everything you remember on one page, then check only what you missed. Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "created_at": "2026-11-12T16:14:12+00:00"
     }
   ],
   "visuals": [
