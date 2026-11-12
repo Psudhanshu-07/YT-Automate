@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-11T00:12:22+00:00",
+  "updated_at": "2026-11-12T01:32:23+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -101,6 +101,17 @@
       "status": "uploaded",
       "video_id": "1HmGeWrk404",
       "privacy_status": "public"
+    },
+    {
+      "topic": "Desk friction test with phone accelerometer",
+      "angle": "Use a phone's built‑in accelerometer to quantify desk friction and predict slippage without buying extra tools.",
+      "why_it_matters": "Students can quickly identify slippery desks and fix them, preventing accidents and saving money.",
+      "concrete_detail": "Place the phone flat on the desk, tilt it from 0° to 45° while recording acceleration, then note the tilt angle where motion starts to calculate the static friction coefficient.",
+      "created_at": "2026-11-12T01:25:52+00:00",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "status": "uploaded",
+      "video_id": "dq9IYrc5n_E",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -157,7 +168,18 @@
       "text": "Your sticky notes keep falling off study walls because of how you peel them. Most students grab the bottom corner and yank upward, only to find their formula sheets on the floor hours later. When you pull vertically, you bend the paper fibers past their elastic limit. That permanent curl creates spring tension that constantly fights the weak pressure-sensitive glue. Instead, pull horizontally from left to right along the 76 mm adhesive strip instead of pulling vertically from the bottom edge. Smoothing it down harder will not fix it once the paper fibers are bent. Peel your next reminder sideways right now and stick it flat against your monitor.",
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
       "created_at": "2026-11-11T00:12:22+00:00"
+    },
+    {
+      "topic": "Desk friction test with phone accelerometer",
+      "text": "Use a phone's built‑in accelerometer to quantify desk friction and predict slippage without buying extra tools. Students can quickly identify slippery desks and fix them, preventing accidents and saving money. The trick is simple: Place the phone flat on the desk, tilt it from 0° to 45° while recording acceleration, then note the tilt angle where motion starts to calculate the static friction coefficient. Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "created_at": "2026-11-12T01:32:23+00:00"
     }
   ],
-  "visuals": []
+  "visuals": [
+    {
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "source_id": "186965042"
+    }
+  ]
 }
