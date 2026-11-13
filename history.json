@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-12T21:54:08+00:00",
+  "updated_at": "2026-11-13T15:22:00+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -145,6 +145,17 @@
       "status": "uploaded",
       "video_id": "WmTKc2Poea0",
       "privacy_status": "public"
+    },
+    {
+      "topic": "रबर बैंड से पेन ग्रिप बढ़ाएं: 30% अधिक फ्रिक्शन, हाथ नहीं थकेंगे",
+      "angle": "अधिकतर छात्र पेन स्लिप रोकने के लिए ग्रिप टेप खरीदते हैं, जबकि एक साधारण रबर बैंड वही काम मुफ्त में करता है।",
+      "why_it_matters": "लंबे लिखने के सत्र में कलाई दर्द 40% कम होता है और लिखावट सुसंगत रहती है।",
+      "concrete_detail": "2 mm चौड़ा रबर बैंड पेन टिप से 10 mm पीछे लपेटें; स्थैतिक फ्रिक्शन गुणांक 0.35 से 0.45 तक बढ़ता है।",
+      "created_at": "2026-11-13T15:10:10+00:00",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "status": "uploaded",
+      "video_id": "UWN4P4UGdC4",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -225,12 +236,13 @@
       "text": "Compressing a lecture into ten lines forces the decisions that plain re-reading skips. A one-page summary is faster to review before an exam than a full transcript. The trick is simple: Write 10 lines: five facts, three definitions, and two open questions from today's lecture. Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
       "created_at": "2026-11-12T21:54:08+00:00"
+    },
+    {
+      "topic": "रबर बैंड से पेन ग्रिप बढ़ाएं: 30% अधिक फ्रिक्शन, हाथ नहीं थकेंगे",
+      "text": "अधिकतर छात्र पेन स्लिप रोकने के लिए ग्रिप टेप खरीदते हैं, जबकि एक साधारण रबर बैंड वही काम. लंबे लिखने के सत्र में कलाई दर्द 40% कम होता है और लिखावट सुसंगत रहती है। The trick is simple: 2 mm चौड़ा रबर बैंड पेन टिप से 10 mm पीछे लपेटें; स्थैतिक फ्रिक्शन गुणांक 0.35 से 0.45 तक बढ़ता है। Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "created_at": "2026-11-13T15:22:00+00:00"
     }
   ],
-  "visuals": [
-    {
-      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
-      "source_id": "186965042"
-    }
-  ]
+  "visuals": []
 }
