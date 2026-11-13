@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-13T18:21:03+00:00",
+  "updated_at": "2026-11-13T21:20:49+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -167,6 +167,17 @@
       "status": "uploaded",
       "video_id": "vNSqtq4wbyY",
       "privacy_status": "public"
+    },
+    {
+      "topic": "One free tool that replaces three science facts, friction, inventions apps",
+      "angle": "Consolidating tools beats adding another app, because your notes stay in one searchable place.",
+      "why_it_matters": "Every extra app adds a place to lose notes and a subscription to forget.",
+      "concrete_detail": "Pick a single free notes app, import two old documents, and delete the duplicate shortcuts.",
+      "created_at": "2026-11-13T21:17:46+00:00",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "status": "uploaded",
+      "video_id": "K3ZfV9X6WOo",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -259,6 +270,12 @@
       "text": "Spending ten minutes organising notes and files on Sunday beats an hour of re-reading later. A small weekly reset removes the daily friction that eats study time. The trick is simple: Block 10 minutes, name one folder and one note file, and archive everything older than a week. Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
       "created_at": "2026-11-13T18:21:03+00:00"
+    },
+    {
+      "topic": "One free tool that replaces three science facts, friction, inventions apps",
+      "text": "Consolidating tools beats adding another app, because your notes stay in one searchable place. Every extra app adds a place to lose notes and a subscription to forget. The trick is simple: Pick a single free notes app, import two old documents, and delete the duplicate shortcuts. Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "created_at": "2026-11-13T21:20:49+00:00"
     }
   ],
   "visuals": [
