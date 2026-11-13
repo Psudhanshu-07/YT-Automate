@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-13T15:22:00+00:00",
+  "updated_at": "2026-11-13T18:21:03+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -156,6 +156,17 @@
       "status": "uploaded",
       "video_id": "UWN4P4UGdC4",
       "privacy_status": "public"
+    },
+    {
+      "topic": "The 10-minute science facts, friction, inventions reset that fixes a messy week",
+      "angle": "Spending ten minutes organising notes and files on Sunday beats an hour of re-reading later.",
+      "why_it_matters": "A small weekly reset removes the daily friction that eats study time.",
+      "concrete_detail": "Block 10 minutes, name one folder and one note file, and archive everything older than a week.",
+      "created_at": "2026-11-13T18:18:09+00:00",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "status": "uploaded",
+      "video_id": "vNSqtq4wbyY",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -242,7 +253,18 @@
       "text": "अधिकतर छात्र पेन स्लिप रोकने के लिए ग्रिप टेप खरीदते हैं, जबकि एक साधारण रबर बैंड वही काम. लंबे लिखने के सत्र में कलाई दर्द 40% कम होता है और लिखावट सुसंगत रहती है। The trick is simple: 2 mm चौड़ा रबर बैंड पेन टिप से 10 mm पीछे लपेटें; स्थैतिक फ्रिक्शन गुणांक 0.35 से 0.45 तक बढ़ता है। Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
       "created_at": "2026-11-13T15:22:00+00:00"
+    },
+    {
+      "topic": "The 10-minute science facts, friction, inventions reset that fixes a messy week",
+      "text": "Spending ten minutes organising notes and files on Sunday beats an hour of re-reading later. A small weekly reset removes the daily friction that eats study time. The trick is simple: Block 10 minutes, name one folder and one note file, and archive everything older than a week. Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "created_at": "2026-11-13T18:21:03+00:00"
     }
   ],
-  "visuals": []
+  "visuals": [
+    {
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "source_id": "186965042"
+    }
+  ]
 }
