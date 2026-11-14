@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-14T20:10:35+00:00",
+  "updated_at": "2026-11-14T23:21:42+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -200,6 +200,17 @@
       "status": "uploaded",
       "video_id": "4xaiXTPS0aI",
       "privacy_status": "public"
+    },
+    {
+      "topic": "Why Rubbing a New Eraser on Denim Stops Graphite Smudges",
+      "angle": "New PVC erasers smear marks because surface-migrated liquid plasticizers act as a lubricant, which must be stripped to expose high-friction vinyl.",
+      "why_it_matters": "Prevents students from ruining exam answer sheets with oily, irreversible graphite smears.",
+      "concrete_detail": "Scuff the eraser tip firmly on denim or canvas for 5 seconds until the surface switches from a reflective sheen to a chalky matte texture.",
+      "created_at": "2026-11-14T23:05:48+00:00",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "status": "uploaded",
+      "video_id": "3Jk2yu4S600",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -310,12 +321,13 @@
       "text": "डेस्क पर सीधे लिखने से हर्ट्ज़ियन कॉन्टैक्ट स्ट्रेस बढ़ता है, जिससे बॉल रोल होने के बजाय स्किड करती. लंबे एग्जाम में लिखते समय पेन पर अतिरिक्त दबाव नहीं देना पड़ेगा, जिससे उंगलियों के क्रैम्प और इंक स्किपिंग तुरंत रुक जाएगी। The trick is simple: कागज के नीचे 70-80 GSM के न्यूनतम 3 बफर पेज रखना, जिससे मिलने वाला माइक्रो-इलास्टिक डिफॉर्मेशन बॉलपॉइंट को पूरा रोलिंग फ्रिक्शन देता है। Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
       "created_at": "2026-11-14T20:10:35+00:00"
+    },
+    {
+      "topic": "Why Rubbing a New Eraser on Denim Stops Graphite Smudges",
+      "text": "Your new eraser smears because its surface is oily. Most PVC erasers are packaged with a little liquid plasticizer that slowly migrates to the surface. That oily layer lowers friction, so graphite slides instead of lifting cleanly. Scuff the eraser tip firmly on denim or canvas for 5 seconds until the surface switches from a reflective sheen to a chalky matte texture. That matte vinyl grips the pencil mark better and reduces the wet, gray smear on exam paper. Do not wet the eraser or press hard with a brand-new block, because both can spread graphite deeper into the paper fibers.",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "created_at": "2026-11-14T23:21:42+00:00"
     }
   ],
-  "visuals": [
-    {
-      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
-      "source_id": "186965042"
-    }
-  ]
+  "visuals": []
 }
