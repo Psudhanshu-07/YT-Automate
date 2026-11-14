@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-14T00:26:15+00:00",
+  "updated_at": "2026-11-14T20:10:35+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -189,6 +189,17 @@
       "status": "uploaded",
       "video_id": "XSyqTpU53X8",
       "privacy_status": "public"
+    },
+    {
+      "topic": "हार्ड डेस्क पर लिखते समय नीचे 3-4 खाली पेज रखकर फ्रिक्शन कैसे ऑप्टिमाइज़ करें",
+      "angle": "डेस्क पर सीधे लिखने से हर्ट्ज़ियन कॉन्टैक्ट स्ट्रेस बढ़ता है, जिससे बॉल रोल होने के बजाय स्किड करती है और हाथ जल्दी थकता है।",
+      "why_it_matters": "लंबे एग्जाम में लिखते समय पेन पर अतिरिक्त दबाव नहीं देना पड़ेगा, जिससे उंगलियों के क्रैम्प और इंक स्किपिंग तुरंत रुक जाएगी।",
+      "concrete_detail": "कागज के नीचे 70-80 GSM के न्यूनतम 3 बफर पेज रखना, जिससे मिलने वाला माइक्रो-इलास्टिक डिफॉर्मेशन बॉलपॉइंट को पूरा रोलिंग फ्रिक्शन देता है।",
+      "created_at": "2026-11-14T19:57:02+00:00",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "status": "uploaded",
+      "video_id": "4xaiXTPS0aI",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -293,7 +304,18 @@
       "text": "A corner staple is a hinge, and hinges fail along a single line. Every staple you fire parallel to the paper edge cuts on one axis. Flip the pages and that single shear-stress line takes all the load, so the fibers along it tear first. Tilt the staple instead. Position it exactly 4 to 5 mm inward from the top-left corner, tilted at a 45-degree angle to both edges. Now the tension spreads across the diagonal, and the paper flexes like a hinge instead of snapping along a seam. The mistake: stapling flush against the corner, which leaves almost no margin and turns one tear into a missing corner. Staple your next set of notes that way.",
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
       "created_at": "2026-11-14T00:26:15+00:00"
+    },
+    {
+      "topic": "हार्ड डेस्क पर लिखते समय नीचे 3-4 खाली पेज रखकर फ्रिक्शन कैसे ऑप्टिमाइज़ करें",
+      "text": "डेस्क पर सीधे लिखने से हर्ट्ज़ियन कॉन्टैक्ट स्ट्रेस बढ़ता है, जिससे बॉल रोल होने के बजाय स्किड करती. लंबे एग्जाम में लिखते समय पेन पर अतिरिक्त दबाव नहीं देना पड़ेगा, जिससे उंगलियों के क्रैम्प और इंक स्किपिंग तुरंत रुक जाएगी। The trick is simple: कागज के नीचे 70-80 GSM के न्यूनतम 3 बफर पेज रखना, जिससे मिलने वाला माइक्रो-इलास्टिक डिफॉर्मेशन बॉलपॉइंट को पूरा रोलिंग फ्रिक्शन देता है। Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "created_at": "2026-11-14T20:10:35+00:00"
     }
   ],
-  "visuals": []
+  "visuals": [
+    {
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "source_id": "186965042"
+    }
+  ]
 }
