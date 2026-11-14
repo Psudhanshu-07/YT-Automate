@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-13T21:20:49+00:00",
+  "updated_at": "2026-11-14T00:26:15+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -178,6 +178,17 @@
       "status": "uploaded",
       "video_id": "K3ZfV9X6WOo",
       "privacy_status": "public"
+    },
+    {
+      "topic": "Why Stapling Pages at a 45-Degree Angle Prevents Corner Tears",
+      "angle": "Parallel staples create a single shear-stress line that snaps paper fibers when flipped, while a 45-degree diagonal distributes hinge tension smoothly.",
+      "why_it_matters": "It stops multi-page lab reports, coaching assignments, and handwritten notes from tearing away at the binding corner during repeated flipping.",
+      "concrete_detail": "Position the staple exactly 4 to 5 mm inward from the top-left corner, tilted at a 45-degree angle to both edges.",
+      "created_at": "2026-11-14T00:22:21+00:00",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "status": "uploaded",
+      "video_id": "XSyqTpU53X8",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -276,12 +287,13 @@
       "text": "Consolidating tools beats adding another app, because your notes stay in one searchable place. Every extra app adds a place to lose notes and a subscription to forget. The trick is simple: Pick a single free notes app, import two old documents, and delete the duplicate shortcuts. Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
       "created_at": "2026-11-13T21:20:49+00:00"
+    },
+    {
+      "topic": "Why Stapling Pages at a 45-Degree Angle Prevents Corner Tears",
+      "text": "A corner staple is a hinge, and hinges fail along a single line. Every staple you fire parallel to the paper edge cuts on one axis. Flip the pages and that single shear-stress line takes all the load, so the fibers along it tear first. Tilt the staple instead. Position it exactly 4 to 5 mm inward from the top-left corner, tilted at a 45-degree angle to both edges. Now the tension spreads across the diagonal, and the paper flexes like a hinge instead of snapping along a seam. The mistake: stapling flush against the corner, which leaves almost no margin and turns one tear into a missing corner. Staple your next set of notes that way.",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "created_at": "2026-11-14T00:26:15+00:00"
     }
   ],
-  "visuals": [
-    {
-      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
-      "source_id": "186965042"
-    }
-  ]
+  "visuals": []
 }
