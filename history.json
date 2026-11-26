@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-26T20:15:30+00:00",
+  "updated_at": "2026-11-26T23:35:27+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -233,6 +233,17 @@
       "status": "uploaded",
       "video_id": "6wxGRUPAvyQ",
       "privacy_status": "public"
+    },
+    {
+      "topic": "पढ़ाई के दौरान विचलित करने वाले विचारों के लिए पार्किंग लॉट शीट",
+      "angle": "विचलन को दबाने के बजाय उसे कागज पर 'बाद में देखें' में लिखने से दिमाग का बैकग्राउंड लूप बंद होता है और एकाग्रता लौटती है।",
+      "why_it_matters": "व्यस्त छात्र 20 मिनट के एक स्प्रिंट में बिना फोन छोड़े या विचार दबाए पढ़ाई जारी रख सकते हैं।",
+      "concrete_detail": "पार्किंग लॉट शीट पर हर विचलन एक पंक्ति में लिखें, 20 मिनट का टाइमर लगाएँ और सत्र के अंत में केवल 2 सबसे जरूरी विचार चुनें।",
+      "created_at": "2026-11-26T23:31:39+00:00",
+      "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
+      "status": "uploaded",
+      "video_id": "LtyN6sWTzME",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -361,6 +372,12 @@
       "text": "Most videos treat procrastination as laziness, but for students it is usually a missing trigger, so you chain. A student can open their book and solve one problem within 60 seconds without needing to feel motivated, which protects study time during busy exam weeks. The trick is simple: Write one sentence using the template If I , then I will , for example If I finish dinner, then I will open my notebook and solve one math problem. Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it.",
       "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
       "created_at": "2026-11-26T20:15:30+00:00"
+    },
+    {
+      "topic": "पढ़ाई के दौरान विचलित करने वाले विचारों के लिए पार्किंग लॉट शीट",
+      "text": "विचलन को दबाने के बजाय उसे कागज पर 'बाद में देखें' में लिखने से दिमाग का बैकग्राउंड लूप. व्यस्त छात्र 20 मिनट के एक स्प्रिंट में बिना फोन छोड़े या विचार दबाए पढ़ाई जारी रख सकते हैं। The trick is simple: पार्किंग लॉट शीट पर हर विचलन एक पंक्ति में लिखें, 20 मिनट का टाइमर लगाएँ और सत्र के अंत में केवल 2 सबसे जरूरी विचार चुनें। Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
+      "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
+      "created_at": "2026-11-26T23:35:27+00:00"
     }
   ],
   "visuals": [
