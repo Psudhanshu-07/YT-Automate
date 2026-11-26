@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-14T23:21:42+00:00",
+  "updated_at": "2026-11-26T18:57:00+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -211,6 +211,17 @@
       "status": "uploaded",
       "video_id": "3Jk2yu4S600",
       "privacy_status": "public"
+    },
+    {
+      "topic": "Use a silicone kitchen mat under your notebook to slash writing friction",
+      "angle": "The non‑obvious take is that a cheap silicone mat creates a uniform low‑friction surface, letting you write faster with far less hand strain.",
+      "why_it_matters": "Students can write quicker and avoid wrist fatigue during long study sessions, boosting productivity.",
+      "concrete_detail": "Place a 15 × 20 cm silicone baking mat under your notebook and test by sliding it; friction drops about 30 %.",
+      "created_at": "2026-11-26T18:49:17+00:00",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "status": "uploaded",
+      "video_id": "oBMtwwx4FwE",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -327,7 +338,18 @@
       "text": "Your new eraser smears because its surface is oily. Most PVC erasers are packaged with a little liquid plasticizer that slowly migrates to the surface. That oily layer lowers friction, so graphite slides instead of lifting cleanly. Scuff the eraser tip firmly on denim or canvas for 5 seconds until the surface switches from a reflective sheen to a chalky matte texture. That matte vinyl grips the pencil mark better and reduces the wet, gray smear on exam paper. Do not wet the eraser or press hard with a brand-new block, because both can spread graphite deeper into the paper fibers.",
       "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
       "created_at": "2026-11-14T23:21:42+00:00"
+    },
+    {
+      "topic": "Use a silicone kitchen mat under your notebook to slash writing friction",
+      "text": "The non‑obvious take is that a cheap silicone mat creates a uniform low‑friction surface, letting you write faster. Students can write quicker and avoid wrist fatigue during long study sessions, boosting productivity. The trick is simple: Place a 15 × 20 cm silicone baking mat under your notebook and test by sliding it; friction drops about 30 %. Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "created_at": "2026-11-26T18:57:00+00:00"
     }
   ],
-  "visuals": []
+  "visuals": [
+    {
+      "niche": "science facts, friction, inventions, theories, and discoveries for Indian audiences",
+      "source_id": "186965042"
+    }
+  ]
 }
