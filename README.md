@@ -8,8 +8,8 @@ edits portrait stock footage to the voice track, and uploads the result to
 YouTube with the metadata you configured. `history.json` is committed back after
 every run so the agent never repeats a topic.
 
-Default niche: **tech and AI tips for students** (change one line in
-`config.yaml`).
+Default niche: **motivation, mindset, discipline, resilience, and personal
+growth for Indian audiences** (change one line in `config.yaml`).
 
 ---
 
