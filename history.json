@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-26T23:35:27+00:00",
+  "updated_at": "2026-11-27T02:13:06+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -244,6 +244,17 @@
       "status": "uploaded",
       "video_id": "LtyN6sWTzME",
       "privacy_status": "public"
+    },
+    {
+      "topic": "The Hemingway Bridge: Stop Mid-Problem to Beat Morning Study Resistance",
+      "angle": "Finishing a chapter gives temporary closure but maximizes starting friction tomorrow; stopping mid-task forces your brain to resume instantly to resolve unfinished work.",
+      "why_it_matters": "Eliminates morning hesitation and decision fatigue, allowing a student to dive into deep work within two minutes of sitting at their desk.",
+      "concrete_detail": "Leave the final math equation half-solved or write only the first sub-heading of the next section before shutting your notebook for the night.",
+      "created_at": "2026-11-27T02:08:32+00:00",
+      "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
+      "status": "uploaded",
+      "video_id": "yyAX2oc-wjQ",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -378,6 +389,12 @@
       "text": "विचलन को दबाने के बजाय उसे कागज पर 'बाद में देखें' में लिखने से दिमाग का बैकग्राउंड लूप. व्यस्त छात्र 20 मिनट के एक स्प्रिंट में बिना फोन छोड़े या विचार दबाए पढ़ाई जारी रख सकते हैं। The trick is simple: पार्किंग लॉट शीट पर हर विचलन एक पंक्ति में लिखें, 20 मिनट का टाइमर लगाएँ और सत्र के अंत में केवल 2 सबसे जरूरी विचार चुनें। Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
       "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
       "created_at": "2026-11-26T23:35:27+00:00"
+    },
+    {
+      "topic": "The Hemingway Bridge: Stop Mid-Problem to Beat Morning Study Resistance",
+      "text": "The easiest way to dread your morning study session is finishing your chapter tonight. When you close a notebook after a completed unit, your brain registers closure, leaving you with maximum starting friction tomorrow. In 1927, psychologist Bluma Zeigarnik discovered that the human brain obsessively tracks uncompleted tasks. Novelist Ernest Hemingway used this principle by deliberately stopping mid-sentence every evening. Tomorrow, your mind resumes instantly because it craves resolution. Leave the final math equation half-solved or write only the first sub-heading of the next section before shutting your notebook for the night. Neat endings feel satisfying, but they kill momentum. Right now, open tomorrow's first topic and write only its title.",
+      "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
+      "created_at": "2026-11-27T02:13:06+00:00"
     }
   ],
   "visuals": [
