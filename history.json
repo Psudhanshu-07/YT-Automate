@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-27T02:13:06+00:00",
+  "updated_at": "2026-11-27T17:21:18+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -255,6 +255,17 @@
       "status": "uploaded",
       "video_id": "yyAX2oc-wjQ",
       "privacy_status": "public"
+    },
+    {
+      "topic": "मोबाइल ऐप से पढ़ाई शुरू करने से पहले 5 मिनट डेटिंग",
+      "angle": "सीधे पढ़ाई की कोशिश करने से बचें और पहले 5 मिनट के डेटा इकाई से शुरुआत करें।",
+      "why_it_matters": "इससे छोटी शुरायत से बड़ी बारी कम होकर आज़मने वाले व्यायाम को अपनी पढ़ाई में बदल सकते हैं।",
+      "concrete_detail": "Forest app में 5 मिनट की सतर्कता टाइमर चालू करें, फिर केवल एक सबक्रिन खोलें।",
+      "created_at": "2026-11-27T17:15:56+00:00",
+      "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
+      "status": "uploaded",
+      "video_id": "e6nVbWSpFJQ",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -395,6 +406,12 @@
       "text": "The easiest way to dread your morning study session is finishing your chapter tonight. When you close a notebook after a completed unit, your brain registers closure, leaving you with maximum starting friction tomorrow. In 1927, psychologist Bluma Zeigarnik discovered that the human brain obsessively tracks uncompleted tasks. Novelist Ernest Hemingway used this principle by deliberately stopping mid-sentence every evening. Tomorrow, your mind resumes instantly because it craves resolution. Leave the final math equation half-solved or write only the first sub-heading of the next section before shutting your notebook for the night. Neat endings feel satisfying, but they kill momentum. Right now, open tomorrow's first topic and write only its title.",
       "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
       "created_at": "2026-11-27T02:13:06+00:00"
+    },
+    {
+      "topic": "मोबाइल ऐप से पढ़ाई शुरू करने से पहले 5 मिनट डेटिंग",
+      "text": "सीधे पढ़ाई की कोशिश करने से बचें और पहले 5 मिनट के डेटा इकाई से शुरुआत करें। इससे छोटी शुरायत से बड़ी बारी कम होकर आज़मने वाले व्यायाम को अपनी पढ़ाई में बदल सकते हैं। The trick is simple: Forest app में 5 मिनट की सतर्कता टाइमर चालू करें, फिर केवल एक सबक्रिन खोलें। Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
+      "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
+      "created_at": "2026-11-27T17:21:18+00:00"
     }
   ],
   "visuals": [
