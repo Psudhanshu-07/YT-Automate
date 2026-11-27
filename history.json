@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-27T17:21:18+00:00",
+  "updated_at": "2026-11-27T19:55:22+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -266,6 +266,17 @@
       "status": "uploaded",
       "video_id": "e6nVbWSpFJQ",
       "privacy_status": "public"
+    },
+    {
+      "topic": "The 3-Column Error Log for Mock Test Analysis",
+      "angle": "Reviewing mock tests fails when students treat misreading a question and not knowing a formula as the exact same mistake.",
+      "why_it_matters": "It isolates careless blunders from genuine knowledge gaps so students stop wasting hours re-studying topics they already know.",
+      "concrete_detail": "Draw three columns on paper labeled 'Concept Gap', 'Misread Question', and 'Time Panic', then tally your last 15 incorrect answers.",
+      "created_at": "2026-11-27T19:45:38+00:00",
+      "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
+      "status": "uploaded",
+      "video_id": "5qsJxw8WwrM",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -412,12 +423,13 @@
       "text": "सीधे पढ़ाई की कोशिश करने से बचें और पहले 5 मिनट के डेटा इकाई से शुरुआत करें। इससे छोटी शुरायत से बड़ी बारी कम होकर आज़मने वाले व्यायाम को अपनी पढ़ाई में बदल सकते हैं। The trick is simple: Forest app में 5 मिनट की सतर्कता टाइमर चालू करें, फिर केवल एक सबक्रिन खोलें। Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
       "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
       "created_at": "2026-11-27T17:21:18+00:00"
+    },
+    {
+      "topic": "The 3-Column Error Log for Mock Test Analysis",
+      "text": "Re-studying an entire physics chapter because you misread a question is pure wasted effort. Most mock test reviews fail because they treat careless blunders and missing knowledge as the same problem. When you lump every red mark together, you end up rereading formulas you already know. Instead, draw three columns on paper labeled Concept Gap, Misread Question, and Time Panic, then tally your last 15 incorrect answers. You will often discover that actual knowledge gaps cause fewer than half of your lost marks. Fixing your pacing under pressure protects your score faster than re-reading textbooks. Open your latest test sheet right now and classify your first three mistakes.",
+      "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
+      "created_at": "2026-11-27T19:55:22+00:00"
     }
   ],
-  "visuals": [
-    {
-      "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
-      "source_id": "186965042"
-    }
-  ]
+  "visuals": []
 }
