@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-27T19:55:22+00:00",
+  "updated_at": "2026-11-27T23:20:44+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -277,6 +277,17 @@
       "status": "uploaded",
       "video_id": "5qsJxw8WwrM",
       "privacy_status": "public"
+    },
+    {
+      "topic": "ब्लैंक पेज रिकॉल: पढ़ाई के बाद 90 सेकंड बिना किताब देखे लिखें",
+      "angle": "यह रीडिंग से ज़्यादा रिकॉल पर जोर देता है, जिससे पता चलता है कि असल में कितना याद रह गया है।",
+      "why_it_matters": "छात्र तुरंत पता कर सकते हैं कि कौन-से पॉइंट दोहराने होंगे, इसलिए कम समय में पढ़ाई ज़्यादा प्रभावी होगी।",
+      "concrete_detail": "90 सेकंड का टाइमर लगाएं, बिना किताब खोले 3 बुलेट पॉइंट लिखें, फिर सिर्फ़ छूटे हुए पॉइंट लाल पेन से जोड़ें।",
+      "created_at": "2026-11-27T23:17:11+00:00",
+      "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
+      "status": "uploaded",
+      "video_id": "zHmVX-ef8sI",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -429,7 +440,18 @@
       "text": "Re-studying an entire physics chapter because you misread a question is pure wasted effort. Most mock test reviews fail because they treat careless blunders and missing knowledge as the same problem. When you lump every red mark together, you end up rereading formulas you already know. Instead, draw three columns on paper labeled Concept Gap, Misread Question, and Time Panic, then tally your last 15 incorrect answers. You will often discover that actual knowledge gaps cause fewer than half of your lost marks. Fixing your pacing under pressure protects your score faster than re-reading textbooks. Open your latest test sheet right now and classify your first three mistakes.",
       "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
       "created_at": "2026-11-27T19:55:22+00:00"
+    },
+    {
+      "topic": "ब्लैंक पेज रिकॉल: पढ़ाई के बाद 90 सेकंड बिना किताब देखे लिखें",
+      "text": "यह रीडिंग से ज़्यादा रिकॉल पर जोर देता है, जिससे पता चलता है कि असल में कितना याद. छात्र तुरंत पता कर सकते हैं कि कौन-से पॉइंट दोहराने होंगे, इसलिए कम समय में पढ़ाई ज़्यादा प्रभावी होगी। The trick is simple: 90 सेकंड का टाइमर लगाएं, बिना किताब खोले 3 बुलेट पॉइंट लिखें, फिर सिर्फ़ छूटे हुए पॉइंट लाल पेन से जोड़ें। Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
+      "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
+      "created_at": "2026-11-27T23:20:44+00:00"
     }
   ],
-  "visuals": []
+  "visuals": [
+    {
+      "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
+      "source_id": "186965042"
+    }
+  ]
 }
