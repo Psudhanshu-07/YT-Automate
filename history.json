@@ -1,7 +1,7 @@
 {
   "version": 1,
   "niche": "tech and AI tips for students",
-  "updated_at": "2026-11-28T01:53:03+00:00",
+  "updated_at": "2026-11-28T16:18:56+00:00",
   "topics": [
     {
       "topic": "Turn Messy Lecture Notes into an Anki Cloze Deck in 60 Seconds",
@@ -299,6 +299,17 @@
       "status": "uploaded",
       "video_id": "CCincZ-3PqE",
       "privacy_status": "public"
+    },
+    {
+      "topic": "मिश्रित अभ्यास (Interleaving): एक जैसे सवाल लगातार हल करने की गलती छोड़ें",
+      "angle": "एक ही विषय के सवाल लगातार करने से सिर्फ नकली आत्मविश्वास मिलता है, जबकि असली एग्जाम की तैयारी विभिन्न प्रकार के सवालों को आपस में मिलाकर हल करने से होती है।",
+      "why_it_matters": "परीक्षा हॉल में जब सवाल बिना चैप्टर के नाम के आते हैं, तो यह तकनीक दिमाग को तुरंत सही फॉर्मूला या कॉन्सेप्ट पहचानने में मदद करती है।",
+      "concrete_detail": "एक ही चैप्टर के 30 सवाल लगाने के बजाय 3 अलग-अलग चैप्टर्स से 5-5 सवाल चुनकर 15 सवालों का एक रैंडम 'मिक्स सेट' तैयार करें।",
+      "created_at": "2026-11-28T15:57:46+00:00",
+      "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
+      "status": "uploaded",
+      "video_id": "my-cHSjUCvA",
+      "privacy_status": "public"
     }
   ],
   "scripts": [
@@ -463,6 +474,12 @@
       "text": "Countdown timers create pass-fail anxiety when exhausted; counting upward tracks earned momentum with zero baseline expectation. Prevents zero-study guilt spirals by turning low-energy resistance into measurable focus sessions. The trick is simple: Switch your phone clock from Timer to Stopwatch, start reading without a time goal, and stop the clock the exact second your eyes drift off the page. Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
       "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
       "created_at": "2026-11-28T01:53:03+00:00"
+    },
+    {
+      "topic": "मिश्रित अभ्यास (Interleaving): एक जैसे सवाल लगातार हल करने की गलती छोड़ें",
+      "text": "एक ही विषय के सवाल लगातार करने से सिर्फ नकली आत्मविश्वास मिलता है, जबकि असली एग्जाम की तैयारी. परीक्षा हॉल में जब सवाल बिना चैप्टर के नाम के आते हैं, तो यह तकनीक दिमाग को तुरंत सही फॉर्मूला या कॉन्सेप्ट पहचानने में मदद करती है। The trick is simple: एक ही चैप्टर के 30 सवाल लगाने के बजाय 3 अलग-अलग चैप्टर्स से 5-5 सवाल चुनकर 15 सवालों का एक रैंडम 'मिक्स सेट' तैयार करें। Most students skip this because it feels too small to matter, but the small step is what makes the rest stick. Try it once, give it 20 minutes, then compare what you remember with what you would have remembered without it. If the result surprises you, keep the habit for one week and note what changed.",
+      "niche": "motivation, mindset, discipline, resilience, and personal growth for Indian audiences",
+      "created_at": "2026-11-28T16:18:56+00:00"
     }
   ],
   "visuals": [
